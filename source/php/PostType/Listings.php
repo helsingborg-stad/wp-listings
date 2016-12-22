@@ -6,6 +6,7 @@ class Listings extends \WpListings\Entity\PostType
 {
     public function __construct()
     {
+        // Create posttype
         $postType = new \WpListings\Entity\PostType(
             _x('Listings', 'Post type plural', 'wp-listings'),
             _x('Listing', 'Post type singular', 'wp-listings'),
@@ -29,14 +30,15 @@ class Listings extends \WpListings\Entity\PostType
             )
         );
 
+        // Create taxonomy
         $categories = new \WpListings\Entity\Taxonomy(
             __('Category', 'wp-listings'),
             __('Categories', 'wp-listings'),
             'listing-category',
+            array('listing'),
             array(
                 'hierarchical' => true
-            ),
-            array('listing')
+            )
         );
     }
 }
