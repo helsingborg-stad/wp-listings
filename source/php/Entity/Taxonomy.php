@@ -2,7 +2,7 @@
 
 namespace WpListings\Entity;
 
-abstract class Taxonomy
+class Taxonomy
 {
     public $namePlural;
     public $nameSingular;
@@ -39,6 +39,6 @@ abstract class Taxonomy
 
         $this->args['labels'] = $labels;
 
-        register_taxonomy($this->slug, $this->postTypes, $args);
+        register_taxonomy($this->slug, $this->postTypes, $this->args);
     }
 }

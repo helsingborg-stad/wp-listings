@@ -2,7 +2,7 @@
 
 namespace WpListings\Entity;
 
-abstract class PostType
+class PostType
 {
     public $namePlural;
     public $nameSingular;
