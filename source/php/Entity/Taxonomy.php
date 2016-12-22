@@ -10,7 +10,7 @@ class Taxonomy
     public $args;
     public $postTypes;
 
-    public function __construct($namePlural, $nameSingular, $slug, $args, $postTypes)
+    public function __construct($namePlural, $nameSingular, $slug, $postTypes, $args)
     {
         $this->namePlural = $namePlural;
         $this->nameSingular = $nameSingular;
@@ -21,7 +21,7 @@ class Taxonomy
         add_action('init', array($this, 'registerTaxonomy'));
     }
 
-    public function registerTaxonomy()
+    public function registerTaxonomy() : string
     {
         $labels = array(
             'name'              => $this->namePlural,
@@ -40,5 +40,6 @@ class Taxonomy
         $this->args['labels'] = $labels;
 
         register_taxonomy($this->slug, $this->postTypes, $this->args);
+        return $this->slug;
     }
 }
