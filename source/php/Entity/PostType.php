@@ -37,7 +37,7 @@ abstract class PostType
     public function registerPostType()
     {
         $labels = array(
-            'name'                => $this->nameSingular,
+            'name'                => $this->namePlural,
             'singular_name'       => $this->nameSingular,
             'add_new'             => sprintf(__('Add new %s', 'wp-listings'), $this->nameSingular),
             'add_new_item'        => sprintf(__('Add new %s', 'wp-listings'), $this->nameSingular),
