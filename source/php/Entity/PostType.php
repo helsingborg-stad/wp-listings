@@ -95,7 +95,11 @@ class PostType
     public function tableColumns($columns) : array
     {
         if (!empty($this->tableColumns) && is_array($this->tableColumns)) {
-            $columns = $this->tableColumns;
+            $columns = array_merge(
+                array_splice($columns, 0, 2),
+                $this->tableColumns,
+                array_splice($columns, 0, count($columns))
+            );
         }
 
         return $columns;

@@ -6,6 +6,12 @@ class Listings extends \WpListings\Entity\PostType
 {
     public function __construct()
     {
+        $this->postType();
+        $this->taxonomies();
+    }
+
+    public function postType()
+    {
         // Create posttype
         $postType = new \WpListings\Entity\PostType(
             _x('Listings', 'Post type plural', 'wp-listings'),
@@ -30,7 +36,27 @@ class Listings extends \WpListings\Entity\PostType
             )
         );
 
-        // Create taxonomy
+        $postType->addTableColumn(
+            'category',
+            __('Category'),
+            true,
+            function ($column, $postId) {
+                $i = 0;
+                $categories = get_the_terms($postId, 'listing-category');
+                foreach ($categories as $category) {
+                    if ($i > 0) {
+                        echo ', ';
+                    }
+
+                    echo $category->name;
+                    $i++;
+                }
+            }
+        );
+    }
+
+    public function taxonomies()
+    {
         $categories = new \WpListings\Entity\Taxonomy(
             __('Category', 'wp-listings'),
             __('Categories', 'wp-listings'),
