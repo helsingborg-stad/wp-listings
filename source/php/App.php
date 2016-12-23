@@ -9,7 +9,7 @@ class App
         add_action('admin_enqueue_scripts', array($this, 'enqueueStyles'));
         add_action('admin_enqueue_scripts', array($this, 'enqueueScripts'));
 
-        new \WpListings\PostType\Listings();
+        new \WpListings\Listings();
     }
 
     /**

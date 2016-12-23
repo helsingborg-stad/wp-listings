@@ -1,16 +1,24 @@
 <?php
 
-namespace WpListings\PostType;
+namespace WpListings;
 
 class Listings extends \WpListings\Entity\PostType
 {
     public function __construct()
     {
-        $this->postType();
-        $this->taxonomies();
+        $postTypeSlug = $this->postType();
+        $taxonomySlug = $this->taxonomies();
+
+        add_action('init', function () use ($taxonomySlug) {
+            $this->setupCategoryFields($taxonomySlug);
+        });
     }
 
-    public function postType()
+    /**
+     * Create post type
+     * @return void
+     */
+    public function postType() : string
     {
         // Create posttype
         $postType = new \WpListings\Entity\PostType(
@@ -53,9 +61,15 @@ class Listings extends \WpListings\Entity\PostType
                 }
             }
         );
+
+        return $postType->slug;
     }
 
-    public function taxonomies()
+    /**
+     * Create category taxonomy
+     * @return void
+     */
+    public function taxonomies() : string
     {
         $categories = new \WpListings\Entity\Taxonomy(
             __('Category', 'wp-listings'),
@@ -66,5 +80,107 @@ class Listings extends \WpListings\Entity\PostType
                 'hierarchical' => true
             )
         );
+
+        return $categories->slug;
+    }
+
+    public function setupCategoryFields($tax)
+    {
+        $terms = get_terms(
+            $tax,
+            array(
+                'hide_empty' => false
+            )
+        );
+
+        foreach ($terms as $term) {
+            $fields = get_field('listing_category_fields', $tax . '_' . $term->term_id);
+
+            if (empty($fields)) {
+                continue;
+            }
+
+            $this->addCategoryFields($tax, $term, $fields);
+        }
+    }
+
+    public function addCategoryFields($tax, $term, $fields)
+    {
+        if (!function_exists('acf_add_local_field_group')) {
+            return false;
+        }
+
+        // Add local field group for category
+        $fieldgroup = array(
+            'key' => 'group_' . $tax . '_' . uniqid(),
+            'title' => $term->name,
+            'fields' => array(),
+            'location' => array(
+                array(
+                    array(
+                        'param' => 'post_type',
+                        'operator' => '==',
+                        'value' => 'listing',
+                    ),
+                    array(
+                        'param' => 'post_taxonomy',
+                        'operator' => '==',
+                        'value' => 'listing-category:mobler',
+                    ),
+                ),
+            ),
+            'menu_order' => 0,
+            'position' => 'normal',
+            'style' => 'default',
+            'label_placement' => 'top',
+            'instruction_placement' => 'label',
+            'hide_on_screen' => '',
+            'active' => 1,
+            'description' => '',
+        );
+
+        foreach ($fields as $field) {
+            $fieldgroup['fields'][] = $this->getFieldArray($field);
+        }
+
+        acf_add_local_field_group($fieldgroup);
+    }
+
+    public function getFieldArray($field)
+    {
+        $array = array(
+            'key' => 'field_' . uniqid(),
+            'label' => $field['label'],
+            'name' => sanitize_title($field['label']),
+            'instructions' => '',
+            'required' => 1,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'default_value' => '',
+            'placeholder' => '',
+            'prepend' => '',
+            'append' => '',
+            'maxlength' => '',
+        );
+
+        switch ($field['type']) {
+            case 'select':
+                $array['type'] = 'select';
+                $array['choices'] = array();
+                foreach ($field['alternatives'] as $alternative) {
+                    $array['choices'][$alternative['value']] = $alternative['value'];
+                }
+                break;
+
+            case 'text':
+                $array['type'] = 'text';
+                break;
+        }
+
+        return $array;
     }
 }
