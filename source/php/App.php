@@ -6,27 +6,14 @@ class App
 {
     public function __construct()
     {
-        add_action('admin_enqueue_scripts', array($this, 'enqueueStyles'));
-        add_action('admin_enqueue_scripts', array($this, 'enqueueScripts'));
+        add_filter('acf/settings/load_json', array($this, 'jsonLoadPath'));
 
         new \WpListings\Listings();
     }
 
-    /**
-     * Enqueue required style
-     * @return void
-     */
-    public function enqueueStyles()
+    public function jsonLoadPath($paths)
     {
-
-    }
-
-    /**
-     * Enqueue required scripts
-     * @return void
-     */
-    public function enqueueScripts()
-    {
-
+        $paths[] = WPLISTINGS_PATH . 'source/acf-exports';
+        return $paths;
     }
 }
