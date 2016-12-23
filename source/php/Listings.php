@@ -104,6 +104,12 @@ class Listings extends \WpListings\Entity\PostType
         }
     }
 
+    /**
+     * Adds fields for category
+     * @param string $tax    Taxonomy slug
+     * @param object $term   Term object
+     * @param array $fields  Fields data
+     */
     public function addCategoryFields($tax, $term, $fields)
     {
         if (!function_exists('acf_add_local_field_group')) {
@@ -146,6 +152,11 @@ class Listings extends \WpListings\Entity\PostType
         acf_add_local_field_group($fieldgroup);
     }
 
+    /**
+     * Get field array acf style
+     * @param  array $field Field params
+     * @return array        Acf field array
+     */
     public function getFieldArray($field)
     {
         $array = array(
