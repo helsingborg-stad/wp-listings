@@ -61,5 +61,11 @@
                 </div>
             </div>
         </div>
+
+        <div class="grid">
+            <div class="grid-md-12">
+                <input type="submit" class="btn btn-primary" value="<?php _e('Submit', 'wp-listings'); ?>">
+            </div>
+        </div>
     </form>
 </div>
