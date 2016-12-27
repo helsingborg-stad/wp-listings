@@ -22,7 +22,7 @@ class FrontendForm
     public function showForm()
     {
         $this->enqueueJs();
-        $fieldgroups = \WpListings\Listings::getCategoryFieldsgroups();
+        $fieldgroups = \WpListings\Listings::getCategoryFieldgroups();
 
         $template = apply_filters('wp-listings/form_template', WPLISTINGS_TEMPLATE_PATH . '/frontend-form.php');
 
@@ -38,5 +38,40 @@ class FrontendForm
         add_action('wp_footer', function () {
             wp_print_scripts('wp-listings');
         }, 9999);
+    }
+
+    public static function getFieldMarkup($field)
+    {
+        switch ($field['type']) {
+            case 'select':
+                return self::getSelectField($field);
+
+            default:
+                return self::getTextField($field);
+        }
+    }
+
+    public static function getSelectField($args) : string
+    {
+        $markup .= '<select name="' . $args['name'] . '" id="' . $args['key'] . '" placeholder="' . $args['placeholder'] . '" ';
+
+        if ($args['required']) {
+            $markup .= 'required';
+        }
+
+        $markup .= '>';
+
+        foreach ($args['choices'] as $choice) {
+            $markup .= '<option value="' . $choice . '">' . $choice . '</option>';
+        }
+
+        $markup .= '</select>';
+
+        return $markup;
+    }
+
+    public static function getTextField($args)
+    {
+        return 'text';
     }
 }

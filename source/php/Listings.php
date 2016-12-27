@@ -90,7 +90,7 @@ class Listings extends \WpListings\Entity\PostType
      * Get fields for all categories
      * @return array
      */
-    public static function getCategoryFieldsgroups() : array
+    public static function getCategoryFieldgroups() : array
     {
         // Get all fieldgroups from ACF
         $fieldgroups = acf_get_field_groups();
@@ -151,7 +151,7 @@ class Listings extends \WpListings\Entity\PostType
     {
         // Add local field group for category
         $fieldgroup = array(
-            'key' => 'wp-listings_' . $tax . '_' . $term->slug,
+            'key' => 'wp-listings_' . $tax . '_' . $term->slug . '_' . $term->term_id,
             'title' => $term->name,
             'fields' => array(),
             'location' => array(

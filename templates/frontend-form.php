@@ -29,6 +29,23 @@
             </div>
         </div>
 
+        <?php
+        foreach ($fieldgroups as $fieldgroup) :
+            $fieldgroupKey = explode('_', $fieldgroup['key']);
+            $fieldgroupKey = $fieldgroupKey[count($fieldgroupKey)-1];
+        ?>
+        <fieldset class="grid" data-fieldgroup-key="<?php echo $fieldgroupKey; ?>" style="display: none;" disabled>
+            <div class="grid-md-12">
+                <?php foreach ($fieldgroup['fields'] as $field) : ?>
+                <div class="form-group">
+                    <label for="<?php echo $field['key']; ?>"><?php echo $field['label']; ?></label>
+                    <?php echo self::getFieldMarkup($field); ?>
+                </div>
+                <?php endforeach; ?>
+            </div>
+        </fieldset>
+        <?php endforeach; ?>
+
         <div class="grid">
             <div class="grid-md-12">
                 <div class="form-group">
