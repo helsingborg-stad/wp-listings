@@ -12,6 +12,7 @@ class App
         add_filter('acf/settings/load_json', array($this, 'jsonLoadPath'));
 
         new \WpListings\Listings();
+        new \WpListings\FrontendForm();
     }
 
     /**
