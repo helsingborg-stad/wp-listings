@@ -87,6 +87,28 @@ class Listings extends \WpListings\Entity\PostType
     }
 
     /**
+     * Get fields for all categories
+     * @return array
+     */
+    public static function getCategoryFieldsgroups() : array
+    {
+        // Get all fieldgroups from ACF
+        $fieldgroups = acf_get_field_groups();
+
+        // Filter the fieldgroups to only include wp-listings fieldgroups
+        $fieldgroups = array_values(array_filter($fieldgroups, function ($item) {
+            return substr($item['key'], 0, 11) === 'wp-listings';
+        }));
+
+        // Get fields for each fieldgroup
+        foreach ($fieldgroups as &$fieldgroup) {
+            $fieldgroup['fields'] = acf_get_fields($fieldgroup['key']);
+        }
+
+        return apply_filters('wp-listings/get_category_fieldgroups', $fieldgroups);
+    }
+
+    /**
      * Create ACF JSON exports for category specific fields
      * @param  int    $termId    Term id
      * @param  int    $taxId     Tax id
@@ -129,7 +151,7 @@ class Listings extends \WpListings\Entity\PostType
     {
         // Add local field group for category
         $fieldgroup = array(
-            'key' => 'group_' . $tax . '_' . uniqid(),
+            'key' => 'wp-listings_' . $tax . '_' . $term->slug,
             'title' => $term->name,
             'fields' => array(),
             'location' => array(
