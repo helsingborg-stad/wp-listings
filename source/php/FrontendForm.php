@@ -40,6 +40,11 @@ class FrontendForm
         }, 9999);
     }
 
+    /**
+     * Get markup for a field
+     * @param  array $field  Acf field args
+     * @return string
+     */
     public static function getFieldMarkup($field)
     {
         switch ($field['type']) {
@@ -51,6 +56,11 @@ class FrontendForm
         }
     }
 
+    /**
+     * Get markup for select field
+     * @param  array $args  Field args (acf)
+     * @return string       Field markup
+     */
     public static function getSelectField($args) : string
     {
         $markup .= '<select name="' . $args['name'] . '" id="' . $args['key'] . '" placeholder="' . $args['placeholder'] . '" ';
@@ -70,8 +80,21 @@ class FrontendForm
         return $markup;
     }
 
+    /**
+     * Get markup for text field
+     * @param  array $args  Field args (acf)
+     * @return string       Field markup
+     */
     public static function getTextField($args)
     {
-        return 'text';
+        $markup = '<input type="text" name="' . $args['name'] . '" id="' . $args['key'] . '" placeholder="' . $args['placeholder'] . '" ';
+
+        if ($args['required']) {
+            $markup .= 'required';
+        }
+
+        $markup .= '>';
+
+        return $markup;
     }
 }
