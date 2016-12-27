@@ -4,19 +4,16 @@ namespace WpListings;
 
 class Listings extends \WpListings\Entity\PostType
 {
+    public static $postTypeSlug;
+    public static $taxonomySlug;
+
     public function __construct()
     {
-        $postTypeSlug = $this->postType();
-        $taxonomySlug = $this->taxonomies();
+        self::$postTypeSlug = $this->postType();
+        self::$taxonomySlug = $this->taxonomies();
 
         add_action('created_term', array($this, 'createTermsFieldJson'), 10, 3);
         add_action('edited_term', array($this, 'createTermsFieldJson'), 10, 3);
-
-        /*
-        add_action('acf/init', function () use ($taxonomySlug) {
-            $this->setupCategoryFields($taxonomySlug);
-        }, 100);
-        */
     }
 
     /**

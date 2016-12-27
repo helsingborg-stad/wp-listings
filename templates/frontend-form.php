@@ -14,6 +14,24 @@
         <div class="grid">
             <div class="grid-md-12">
                 <div class="form-group">
+                    <label for="category"><?php _e('Category', 'wp-listings'); ?></label>
+                    <?php
+                    wp_dropdown_categories(array(
+                        'taxonomy' => \WpListings\Listings::$taxonomySlug,
+                        'name' => 'category',
+                        'id' => 'category',
+                        'orderby' => 'name',
+                        'hide_empty' => false,
+                        'hierarchical' => true
+                    ));
+                    ?>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="grid-md-12">
+                <div class="form-group">
                     <label for="description"><?php _e('Description', 'wp-listings'); ?></label>
                     <textarea name="description" id="description" rows="10"></textarea>
                 </div>
