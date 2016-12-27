@@ -13,6 +13,55 @@ class FrontendForm
 
         // Add shortcode
         add_shortcode('wp-listings-form', array($this, 'showForm'));
+
+        add_action('init', array($this, 'submitForm'));
+    }
+
+    public function submitForm()
+    {
+        if (!wp_verify_nonce($_REQUEST['wp-listing-nonce'], 'wp-listing-add')) {
+            return false;
+        }
+
+        $postId = wp_insert_post(array(
+            'post_type' => \WpListings\Listings::$postTypeSlug,
+            'post_title' => $_POST['title'],
+            'post_content' => $_POST['description'],
+            'tax_input' => array(
+                \WpListings\Listings::$taxonomySlug => $_POST['category']
+            ),
+            'meta_input' => array(
+                'listing_price' => isset($_POST['price']) && !empty($_POST['price']) ? $_POST['price'] : 0,
+                'listing_seller_name' => isset($_POST['name']) && !empty($_POST['name']) ? $_POST['name'] : null,
+                'listing_place' => isset($_POST['place']) && !empty($_POST['place']) ? $_POST['place'] : null,
+                'lising_seller_email' => isset($_POST['email']) && !empty($_POST['email']) ? $_POST['email'] : null,
+                'listing_seller_phone_number' => isset($_POST['phone']) && !empty($_POST['phone']) ? $_POST['phone'] : null
+            )
+        ), false);
+
+        $defaultKeys = array(
+            'title',
+            'description',
+            'price',
+            'name',
+            'place',
+            'email',
+            'phone',
+            '_wp_http_referer',
+            'wp-listing-nonce',
+            'category'
+        );
+
+        $additionalMeta = array_filter($_POST, function ($key) use ($defaultKeys) {
+            return !in_array($key, $defaultKeys);
+        }, ARRAY_FILTER_USE_KEY);
+
+        foreach ($additionalMeta as $key => $value) {
+            update_post_meta($postId, $key, $value);
+        }
+
+        wp_redirect($_SERVER['HTTP_REFERER']);
+        exit;
     }
 
     /**

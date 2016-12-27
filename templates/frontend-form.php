@@ -1,12 +1,25 @@
 <div class="wp-listings-form">
-    <form action="?wp-listing=add">
-        <?php wp_nonce_field('wp-listing-add', 'nonce', true, true); ?>
+    <form action="" method="post">
+        <?php wp_nonce_field('wp-listing-add', 'wp-listing-nonce', true, true); ?>
 
         <div class="grid">
             <div class="grid-md-12">
                 <div class="form-group">
                     <label for="title"><?php _e('Title', 'wp-listings'); ?></label>
                     <input type="text" name="title" id="title">
+                </div>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="grid-md-12">
+                <div class="form-group">
+                    <label for="place"><?php _e('Place', 'wp-listings'); ?></label>
+                    <select name="place" id="place">
+                        <?php foreach (\WpListings\Listings::places() as $place) : ?>
+                        <option value="<?php echo $place; ?>"><?php echo $place; ?></option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
             </div>
         </div>
