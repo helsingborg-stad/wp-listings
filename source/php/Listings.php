@@ -9,9 +9,14 @@ class Listings extends \WpListings\Entity\PostType
         $postTypeSlug = $this->postType();
         $taxonomySlug = $this->taxonomies();
 
-        add_action('init', function () use ($taxonomySlug) {
+        add_action('created_term', array($this, 'createTermsFieldJson'), 10, 3);
+        add_action('edited_term', array($this, 'createTermsFieldJson'), 10, 3);
+
+        /*
+        add_action('acf/init', function () use ($taxonomySlug) {
             $this->setupCategoryFields($taxonomySlug);
-        });
+        }, 100);
+        */
     }
 
     /**
@@ -84,7 +89,14 @@ class Listings extends \WpListings\Entity\PostType
         return $categories->slug;
     }
 
-    public function setupCategoryFields($tax)
+    /**
+     * Create ACF JSON exports for category specific fields
+     * @param  int    $termId    Term id
+     * @param  int    $taxId     Tax id
+     * @param  string $tax       Tax slug
+     * @return void
+     */
+    public function createTermsFieldJson($termId, $taxId, $tax)
     {
         $terms = get_terms(
             $tax,
@@ -100,7 +112,13 @@ class Listings extends \WpListings\Entity\PostType
                 continue;
             }
 
-            $this->addCategoryFields($tax, $term, $fields);
+            $json = $this->getCategoryFields($tax, $term, $fields);
+
+            $filename = \WpListings\App::$uploadDir . '/' . $tax . '-' . $term->slug . '.json';
+
+            $fp = fopen($filename, 'w');
+            fwrite($fp, $json);
+            fclose($fp);
         }
     }
 
@@ -110,12 +128,8 @@ class Listings extends \WpListings\Entity\PostType
      * @param object $term   Term object
      * @param array $fields  Fields data
      */
-    public function addCategoryFields($tax, $term, $fields)
+    public function getCategoryFields($tax, $term, $fields) : string
     {
-        if (!function_exists('acf_add_local_field_group')) {
-            return false;
-        }
-
         // Add local field group for category
         $fieldgroup = array(
             'key' => 'group_' . $tax . '_' . uniqid(),
@@ -131,7 +145,7 @@ class Listings extends \WpListings\Entity\PostType
                     array(
                         'param' => 'post_taxonomy',
                         'operator' => '==',
-                        'value' => 'listing-category:mobler',
+                        'value' => $tax . ':' . $term->slug,
                     ),
                 ),
             ),
@@ -149,7 +163,7 @@ class Listings extends \WpListings\Entity\PostType
             $fieldgroup['fields'][] = $this->getFieldArray($field);
         }
 
-        acf_add_local_field_group($fieldgroup);
+        return json_encode($fieldgroup);
     }
 
     /**
@@ -157,7 +171,7 @@ class Listings extends \WpListings\Entity\PostType
      * @param  array $field Field params
      * @return array        Acf field array
      */
-    public function getFieldArray($field)
+    public function getFieldArray($field) : array
     {
         $array = array(
             'key' => 'field_' . uniqid(),
