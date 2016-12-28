@@ -106,7 +106,7 @@ class Listings extends \WpListings\Entity\PostType
                 'hierarchical'          =>  false,
                 'exclude_from_search'   =>  false,
                 'taxonomies'            =>  array(),
-                'supports'              =>  array('title', 'revisions', 'editor')
+                'supports'              =>  array('title', 'revisions', 'editor', 'thumbnail')
             )
         );
 
