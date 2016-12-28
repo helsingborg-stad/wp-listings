@@ -17,6 +17,10 @@ class FrontendForm
         add_action('init', array($this, 'submitForm'));
     }
 
+    /**
+     * Handle form submissions
+     * @return void
+     */
     public function submitForm()
     {
         if (!wp_verify_nonce($_REQUEST['wp-listing-nonce'], 'wp-listing-add')) {
@@ -60,7 +64,16 @@ class FrontendForm
             update_post_meta($postId, $key, $value);
         }
 
-        wp_redirect($_SERVER['HTTP_REFERER']);
+        $redirect = $_SERVER['HTTP_REFERER'];
+        if (strpos($redirect, '?') === false) {
+            $redirect .= '?';
+        } else {
+            $redirect .= '&';
+        }
+
+        $redirect .= 'wp-listings-form=success';
+
+        wp_redirect($redirect);
         exit;
     }
 
