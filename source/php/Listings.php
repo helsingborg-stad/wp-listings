@@ -15,7 +15,11 @@ class Listings extends \WpListings\Entity\PostType
         add_action('created_term', array($this, 'createTermsFieldJson'), 10, 3);
         add_action('edited_term', array($this, 'createTermsFieldJson'), 10, 3);
 
+        // Add places to places selector
         add_filter('acf/load_field/name=listing_place', '\WpListings\Listings::places');
+
+        // Templates
+        add_filter('template_include', array($this, 'loadTemplate'));
     }
 
     public static function places($field = null)
@@ -290,5 +294,30 @@ class Listings extends \WpListings\Entity\PostType
         }
 
         return $array;
+    }
+
+    public function loadTemplate($template)
+    {
+        if (get_post_type() !== self::$postTypeSlug) {
+            return $template;
+        }
+
+        $templateType = '';
+
+        if (is_archive() || is_post_type_archive()) {
+            $templateType = 'archive';
+            $template = 'listing-archive.php';
+        } elseif (is_single()) {
+            $templateType = 'single';
+            $template = 'listing-single.php';
+        }
+
+        $template = locate_template($template, false);
+
+        if (!$template) {
+            $template = WPLISTINGS_TEMPLATE_PATH . '/' . $templateType . '.php';
+        }
+
+        return apply_filters('wp-listings/' . $templateType . '_template', $template);
     }
 }
