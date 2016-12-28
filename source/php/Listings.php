@@ -18,6 +18,9 @@ class Listings extends \WpListings\Entity\PostType
         add_action('created_term', array($this, 'createTermsFieldJson'), 10, 3);
         add_action('edited_term', array($this, 'createTermsFieldJson'), 10, 3);
 
+        add_action('publish_post', array($this, 'published'), 10, 2);
+        add_action('delete_listing', array($this, 'unpublish'));
+
         // Templates
         add_filter('template_include', array($this, 'loadTemplate'));
     }
@@ -267,7 +270,11 @@ class Listings extends \WpListings\Entity\PostType
         return $array;
     }
 
-    public static function places()
+    /**
+     * Get places from taxonomy
+     * @return array Places
+     */
+    public static function places() : array
     {
         return get_terms(
             self::$placesTaxonomySlug,
@@ -277,7 +284,12 @@ class Listings extends \WpListings\Entity\PostType
         );
     }
 
-    public function loadTemplate($template)
+    /**
+     * Loads correct template
+     * @param  string $template Default template
+     * @return string           Template to use
+     */
+    public function loadTemplate($template) : string
     {
         if (get_post_type() !== self::$postTypeSlug) {
             return $template;
@@ -292,5 +304,68 @@ class Listings extends \WpListings\Entity\PostType
         }
 
         return apply_filters('wp-listings/' . $templateType . '_template', $template);
+    }
+
+    /**
+     * What happens when a listing post is publisched
+     * @param  int $postId    The post id
+     * @param  WP_Post $post  WP post object
+     * @return void
+     */
+    public function published($postId, $post)
+    {
+        if ($post->post_type !== \WpListings\App::$postTypeSlug) {
+            return;
+        }
+
+        // Send notification mail to seller
+        $sellerName = get_post_meta($postid, 'listing_seller_name', true);
+        $sellerEmail = get_post_meta($postId, 'lising_seller_email', true);
+
+        wp_mail(
+            $sellerEmail,
+            __('Listing published', 'wp-listings'),
+            sprintf(
+                __('Congratulations %s! Your listing is now approved and published. You can see your listing here: %s', 'wp-listings'),
+                $sellerName,
+                get_permalink($postId)
+            )
+        );
+
+        // Schedule deletion after X days
+        $daysToDelete = 30;
+        $timestamp = time() + ($daysToDelete * (3600 * 24));
+        wp_schedule_single_event($timestamp, 'delete_listing', array(
+            $postId
+        ));
+    }
+
+    /**
+     * Unpublish after x days (cron)
+     * @param  int $postId    Post id
+     * @return boolean
+     */
+    public function unpublish($postId) : boolean
+    {
+        $post = get_post($postId);
+
+        $daysToDelete = 30;
+
+        // Notify seller
+        $sellerName = get_post_meta($postid, 'listing_seller_name', true);
+        $sellerEmail = get_post_meta($postId, 'lising_seller_email', true);
+
+        wp_mail(
+            $sellerEmail,
+            __('Listing unpublished', 'wp-listings'),
+            sprintf(
+                __('Hi %s! Your listing "%s" is now %d days old and therefor it has beed unpublished.', 'wp-listings'),
+                $sellerName,
+                $daysToDelete
+            )
+        );
+
+        // Trash the post
+        return wp_trash_post($postId);
     }
 }
