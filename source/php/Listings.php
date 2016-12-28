@@ -21,6 +21,9 @@ class Listings extends \WpListings\Entity\PostType
         add_action('publish_post', array($this, 'published'), 10, 2);
         add_action('delete_listing', array($this, 'unpublish'));
 
+        // Only one taxonomy (place and categories)
+        add_filter('wp_terms_checklist_args', array($this, 'termsChecklistArgs'));
+
         // Templates
         add_filter('template_include', array($this, 'loadTemplate'));
     }
@@ -368,4 +371,48 @@ class Listings extends \WpListings\Entity\PostType
         // Trash the post
         return wp_trash_post($postId);
     }
+
+    public function termsChecklistArgs($args) : array
+    {
+        if (isset($args['taxonomy']) && in_array($args['taxonomy'], array(self::$taxonomySlug, self::$placesTaxonomySlug))) {
+            $args['walker'] = new \WpListings\CategoryChecklistWalker;
+            $args['checked_ontop'] = false;
+        }
+
+        return $args;
+    }
+
+    /**
+     * Save single terms
+     * @param  int     $postId The post id
+     * @param  WP_Post $post   Wp post object
+     * @return voi
+     */
+    /*
+    public function saveOnlyOneTerm($postId, $post)
+    {
+        if ($post->post_type !== self::$postTypeSlug) {
+            return;
+        }
+
+        // Get the term(s)
+        $taxes = $_POST['tax_input'];
+
+        // Filter out zero values
+        foreach ($taxes as $tax => &$terms) {
+            $terms = array_filter($terms, function ($item) {
+                return $item != 0;
+            });
+
+            $terms = array_values($terms);
+        }
+
+        // Set the terms for the post
+        foreach ($taxes as $tax => $terms) {
+            $terms = array_map('intval', $terms);
+            wp_delete_object_term_relationships($postId, $tax);
+            wp_set_object_terms($postId, $terms, $tax, true);
+        }
+    }
+    */
 }
