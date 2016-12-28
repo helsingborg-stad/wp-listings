@@ -120,6 +120,16 @@
 
                 <div class="grid">
                     <div class="grid-md-12">
+                        <div class="form-group">
+                            <label class="checkbox">
+                                <input type="checkbox" name="hide_phone" value="1"> <?php _e('Hide my phone number', 'wp-lisings'); ?>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid">
+                    <div class="grid-md-12">
                         <input type="submit" class="btn btn-primary" value="<?php _e('Submit', 'wp-listings'); ?>">
                     </div>
                 </div>

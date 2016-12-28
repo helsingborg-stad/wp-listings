@@ -82,7 +82,7 @@
             {
                 "key": "field_5863bdcc7440f",
                 "label": "Display phone number",
-                "name": "display_phone_number",
+                "name": "listing_display_seller_phone_number",
                 "type": "true_false",
                 "instructions": "",
                 "required": 0,
