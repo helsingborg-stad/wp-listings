@@ -58,13 +58,31 @@ class Listings extends \WpListings\Entity\PostType
             true,
             function ($column, $postId) {
                 $i = 0;
-                $categories = get_the_terms($postId, 'listing-category');
+                $categories = get_the_terms($postId, self::$taxonomySlug);
                 foreach ((array)$categories as $category) {
                     if ($i > 0) {
                         echo ', ';
                     }
 
                     echo $category->name;
+                    $i++;
+                }
+            }
+        );
+
+        $postType->addTableColumn(
+            'place',
+            __('Place'),
+            true,
+            function ($column, $postId) {
+                $i = 0;
+                $places = get_the_terms($postId, self::$placesTaxonomySlug);
+                foreach ((array)$places as $place) {
+                    if ($i > 0) {
+                        echo ', ';
+                    }
+
+                    echo $place->name;
                     $i++;
                 }
             }
