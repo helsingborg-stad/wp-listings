@@ -306,16 +306,8 @@ class Listings extends \WpListings\Entity\PostType
 
         if (is_archive() || is_post_type_archive()) {
             $templateType = 'archive';
-            $template = 'listing-archive.php';
         } elseif (is_single()) {
             $templateType = 'single';
-            $template = 'listing-single.php';
-        }
-
-        $template = locate_template($template, false);
-
-        if (!$template) {
-            $template = WPLISTINGS_TEMPLATE_PATH . '/' . $templateType . '.php';
         }
 
         return apply_filters('wp-listings/' . $templateType . '_template', $template);
