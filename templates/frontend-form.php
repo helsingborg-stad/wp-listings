@@ -84,6 +84,82 @@
 
                 <div class="grid">
                     <div class="grid-md-12">
+                        <div class="form-group gutter gutter-bottom gutter-sm">
+                            <label><?php _e('Images', 'wp-listings'); ?></label>
+                            <span class="text-sm">
+                                <?php _e('Note: The first image will be the main image for the listing.', 'wp-listings'); ?><br>
+                                <?php _e('Max filesize'); ?>: 2mb<br>
+                                <?php _e('Allowed filetypes'); ?>: JPG, PNG
+                            </span>
+                        </div>
+
+                        <div class="image-upload inline-block" data-max-files="1" data-max-size="2000" data-preview-image="true" style="width:250px;height:250px;">
+                            <div class="placeholder">
+                                <span class="fa-stack fa-2x">
+                                    <i class="fa fa-picture-o fa-stack-2x"></i>
+                                    <i class="fa fa-plus-circle fa-stack-1x"></i>
+                                </span>
+                                <div class="placeholder-text">
+                                    <span class="placeholder-text-drag"><?php _e('Drag a photo here', 'municipio-intranet'); ?></span>
+                                    <span class="placeholder-text-browse">
+                                        <em class="placeholder-text-or"><?php _e('or', 'municipio-intranet'); ?></em>
+                                        <label for="listing-image-1" class="btn btn-secondary btn-select-file"><?php _e('Select a photo', 'municipio-intranet'); ?></label>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="placeholder placeholder-is-dragover">
+                                <span><?php _e('Drop here', 'wp-listings'); ?></span>
+                            </div>
+                            <div class="selected-file"></div>
+                            <input type="file" id="listing-image-1" name="listing-image[]" class="hidden">
+                        </div>
+
+                        <div class="image-upload inline-block" data-max-files="1" data-max-size="2000" data-preview-image="true" style="width:250px;height:250px;">
+                            <div class="placeholder">
+                                <span class="fa-stack fa-2x">
+                                    <i class="fa fa-picture-o fa-stack-2x"></i>
+                                    <i class="fa fa-plus-circle fa-stack-1x"></i>
+                                </span>
+                                <div class="placeholder-text">
+                                    <span class="placeholder-text-drag"><?php _e('Drag a photo here', 'municipio-intranet'); ?></span>
+                                    <span class="placeholder-text-browse">
+                                        <em class="placeholder-text-or"><?php _e('or', 'municipio-intranet'); ?></em>
+                                        <label for="listing-image-2" class="btn btn-secondary btn-select-file"><?php _e('Select a photo', 'municipio-intranet'); ?></label>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="placeholder placeholder-is-dragover">
+                                <span><?php _e('Drop here', 'wp-listings'); ?></span>
+                            </div>
+                            <div class="selected-file"></div>
+                            <input type="file" id="listing-image-2" name="listing-image[]" class="hidden">
+                        </div>
+
+                        <div class="image-upload inline-block" data-max-files="1" data-max-size="2000" data-preview-image="true" style="width:250px;height:250px;">
+                            <div class="placeholder">
+                                <span class="fa-stack fa-2x">
+                                    <i class="fa fa-picture-o fa-stack-2x"></i>
+                                    <i class="fa fa-plus-circle fa-stack-1x"></i>
+                                </span>
+                                <div class="placeholder-text">
+                                    <span class="placeholder-text-drag"><?php _e('Drag a photo here', 'municipio-intranet'); ?></span>
+                                    <span class="placeholder-text-browse">
+                                        <em class="placeholder-text-or"><?php _e('or', 'municipio-intranet'); ?></em>
+                                        <label for="listing-image-3" class="btn btn-secondary btn-select-file"><?php _e('Select a photo', 'municipio-intranet'); ?></label>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="placeholder placeholder-is-dragover">
+                                <span><?php _e('Drop here', 'wp-listings'); ?></span>
+                            </div>
+                            <div class="selected-file"></div>
+                            <input type="file" id="listing-image-3" name="listing-image[]" class="hidden">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid">
+                    <div class="grid-md-12">
                         <div class="form-group">
                             <label for="price"><?php _e('Price', 'wp-listings'); ?><span class="text-danger">*</span></label>
                             <div class="input-group">
