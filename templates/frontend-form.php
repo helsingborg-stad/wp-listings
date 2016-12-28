@@ -29,7 +29,7 @@
                             <label for="place"><?php _e('Place', 'wp-listings'); ?><span class="text-danger">*</span></label>
                             <select name="place" id="place" required>
                                 <?php foreach (\WpListings\Listings::places() as $place) : ?>
-                                <option value="<?php echo $place; ?>"><?php echo $place; ?></option>
+                                <option value="<?php echo $place->term_id; ?>"><?php echo $place->name; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>

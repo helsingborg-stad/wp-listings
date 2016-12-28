@@ -24,28 +24,6 @@
                 "step": ""
             },
             {
-                "key": "field_585ce1ac3ad67",
-                "label": "Place",
-                "name": "listing_place",
-                "type": "select",
-                "instructions": "",
-                "required": 1,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "choices": [],
-                "default_value": [],
-                "allow_null": 0,
-                "multiple": 0,
-                "ui": 0,
-                "ajax": 0,
-                "return_format": "value",
-                "placeholder": ""
-            },
-            {
                 "key": "field_585ce12d0ee91",
                 "label": "Seller name",
                 "name": "listing_seller_name",

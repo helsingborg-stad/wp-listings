@@ -6,82 +6,20 @@ class Listings extends \WpListings\Entity\PostType
 {
     public static $postTypeSlug;
     public static $taxonomySlug;
+    public static $placesTaxonomySlug;
 
     public function __construct()
     {
         self::$postTypeSlug = $this->postType();
-        self::$taxonomySlug = $this->taxonomies();
+        self::$taxonomySlug = $this->categories();
+
+        self::$placesTaxonomySlug = $this->placesTaxonomy();
 
         add_action('created_term', array($this, 'createTermsFieldJson'), 10, 3);
         add_action('edited_term', array($this, 'createTermsFieldJson'), 10, 3);
 
-        // Add places to places selector
-        add_filter('acf/load_field/name=listing_place', '\WpListings\Listings::places');
-
         // Templates
         add_filter('template_include', array($this, 'loadTemplate'));
-    }
-
-    public static function places($field = null)
-    {
-        $places = apply_filters('wp-listings/places', array(
-            "Ale", "Alingsås", "Alvesta", "Aneby", "Arboga", "Arjeplog", "Arvidsjaur", "Arvika",
-            "Askersund", "Askim", "Avesta", "Backa", "Bengtsfors", "Berg", "Bergsjön",
-            "Biskopsgården", "Bjurholm", "Bjuv", "Boden", "Bollebygd", "Bollnäs", "Borgholm",
-            "Borlänge", "Borås", "Botkyrka", "Boxholm", "Bromma", "Bromölla", "Bräcke", "Burlöv",
-            "Båstad", "Dals-Ed", "Danderyd", "Degerfors", "Dorotea", "Eda", "Ekerö", "Eksjö",
-            "Emmaboda", "Enköping", "Enskede", "Esikltuna", "Eslöv", "Essunga", "Fagersta",
-            "Falkenberg", "Falköping", "Falun", "Farsta", "Filipstad", "Finspång", "Flen",
-            "Forshaga", "Frölunda", "Färgelanda", "Gagnef", "GamlaStan", "Gislaved", "Gnesta",
-            "Gnosjö", "Gotland", "Grums", "Grästorp", "Gullspång", "Gunnared", "Gällivare",
-            "Gävle", "GöteborgC", "GöteborgStad", "Götene", "Habo", "Hagfors", "Hallsberg",
-            "Hallstahammar", "Halmstad", "Hammarby", "Hammarö", "Haninge", "Haparanda", "Heby",
-            "Hedemora", "Helsingborg", "Herrljunga", "Hjo", "Hofors", "Huddinge", "Hudiksvall",
-            "Hultsfred", "Hylte", "Håbo", "Hägersten", "Hällefors", "Härjedalen", "Härlanda",
-            "Härnösand", "Härryda", "Hässelby", "Hässleholm", "Höganäs", "Högsbo", "Högsby",
-            "Hörby", "Höör", "Jokkmokk", "Järfälla", "Jönköping", "Kalix", "Kalmar", "Karlsborg",
-            "Karlshamn", "Karlskoga", "Karlskrona", "Karlstad", "Katrineholm", "Kil", "Kinda",
-            "Kiruna", "Kista", "Klippan", "Kortedala", "Kramfors", "Kristianstad", "Kristinehamn",
-            "Krokom", "Kumla", "Kungsbacka", "Kungsholmen", "Kungsör", "Kungälv", "Kärra-Rödbo",
-            "Kävlinge", "Köping", "Laholm", "Landskrona", "Laxå", "Lekeberg", "Leksand", "Lerum",
-            "Lessebo", "Lidingö", "Lidköping", "Liljeholmen", "LillaEdet", "Lindesberg",
-            "Linköping", "Linnestaden", "Ljungby", "Ljusdal", "Ljusnarsberg", "Lomma", "Ludvika",
-            "Luleå", "Lund", "Lundby", "Lycksele", "Lysekil", "Lärjedalen", "Majorna", "Malmö",
-            "Malung", "Malå", "Mariestad", "Mark", "Markaryd", "Mellerud", "Mjölby", "Mora",
-            "Motala", "Mullsjö", "Munkedal", "Munkfors", "Mölndal", "Mönsterås", "Mörbylånga",
-            "Nacka", "Nora", "Norberg", "Nordanstig", "Nordmaling", "Norrköping", "Norrmalm",
-            "Norrtälje", "Norsjö", "Nybro", "Nykvarn", "Nyköping", "Nynäshamn", "Nässjö",
-            "Ockelbo", "Olofström", "Orsa", "Orust", "Osby", "Oskarshamn", "Ovanåker",
-            "Oxelösund", "Pajala", "Partille", "Perstorp", "Piteå", "Ragunda", "Rinkeby",
-            "Robertsfors", "Ronneby", "Rättvik", "Sala", "Salem", "Sandviken", "Sigtuna",
-            "Simrishamn", "Sjöbo", "Skara", "Skarpnäck", "Skellefteå", "Skinnskatteberg",
-            "Skurup", "Skärholmen", "Skövde", "Smedjebacken", "Sollefteå", "Sollentuna", "Solna",
-            "Sorsele", "Sotenäs", "Spånga/Tensta", "Staffanstorp", "Stenungsund", "StockholmsStad",
-            "Storfors", "Storuman", "Strängnäs", "Strömstad", "Strömsund", "Styrsö", "Sundbyberg",
-            "Sundsvall", "Sunne", "Surahammar", "Svalöv", "Svedala", "Svenljunga", "Säffle",
-            "Säter", "Sävsjö", "Söderhamn", "Söderköping", "Söderled", "Södermalm", "Södertälje",
-            "Sölvesborg", "Tanum", "Tibro", "Tidaholm", "Tierp", "Timrå", "Tingsryd", "Tjörn",
-            "Tomelilla", "Torsby", "Torslanda", "Torsås", "Tranemo", "Tranås", "Trelleborg",
-            "Trollhättan", "Trosa", "Tuve-Säve", "Tynnered", "Tyresö", "Täby", "Töreboda",
-            "Uddevalla", "Ulricehamn", "Umeå", "UpplandsBro", "Upplandsväsby", "Uppsala",
-            "Uppvidinge", "Vadstena", "Vaggeryd", "Valdemarsvik", "Vallentuna", "Vansbro", "Vantör",
-            "Vara", "Varberg", "Vasastaden", "Vaxholm", "Vellinge", "Vetlanda", "Vilhelmina",
-            "Vimmerby", "Vindeln", "Vingåker", "Vårgårda", "Vällingby", "Vänersborg", "Vännäs",
-            "Värmdö", "Värnamo", "Västervik", "Västerås", "Växjö", "Ydre", "Ystad", "Åmål", "Ånge",
-            "Åre", "Årjäng", "Åresta", "Åsele", "Åstorp", "Åtvidaberg", "Älmhult", "Älvdalen",
-            "Älvkarleby", "Älsvborg", "Älvsbyn", "Älvsjö", "Ängelholm", "Öckerö", "Ödeshög",
-            "Örebro", "Örgryte", "Örkelljunga", "Örnsköldsvik", "Östermalm/Djurgården", "Östersund",
-            "Österåker", "Östhammar", "ÖstraGöinge", "Överkalix", "Övertorneå"
-        ));
-
-        $places = array_combine($places, $places);
-
-        if (!$field) {
-            return $places;
-        }
-
-        $field['choices'] = $places;
-        return $field;
     }
 
     /**
@@ -139,7 +77,7 @@ class Listings extends \WpListings\Entity\PostType
      * Create category taxonomy
      * @return void
      */
-    public function taxonomies() : string
+    public function categories() : string
     {
         $categories = new \WpListings\Entity\Taxonomy(
             __('Category', 'wp-listings'),
@@ -152,6 +90,21 @@ class Listings extends \WpListings\Entity\PostType
         );
 
         return $categories->slug;
+    }
+
+    public function placesTaxonomy()
+    {
+        $places = new \WpListings\Entity\Taxonomy(
+            __('Place', 'wp-listings'),
+            __('Places', 'wp-listings'),
+            'listing-places',
+            array('listing'),
+            array(
+                'hierarchical' => true
+            )
+        );
+
+        return $places->slug;
     }
 
     /**
@@ -294,6 +247,16 @@ class Listings extends \WpListings\Entity\PostType
         }
 
         return $array;
+    }
+
+    public static function places()
+    {
+        return get_terms(
+            self::$placesTaxonomySlug,
+            array(
+                'hide_empty' => false
+            )
+        );
     }
 
     public function loadTemplate($template)

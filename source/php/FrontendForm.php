@@ -32,12 +32,12 @@ class FrontendForm
             'post_title' => $_POST['title'],
             'post_content' => $_POST['description'],
             'tax_input' => array(
-                \WpListings\Listings::$taxonomySlug => $_POST['category']
+                \WpListings\Listings::$taxonomySlug => $_POST['category'],
+                \WpListings\Listings::$placesTaxonomySlug => $_POST['place']
             ),
             'meta_input' => array(
                 'listing_price' => isset($_POST['price']) && !empty($_POST['price']) ? $_POST['price'] : 0,
                 'listing_seller_name' => isset($_POST['name']) && !empty($_POST['name']) ? $_POST['name'] : null,
-                'listing_place' => isset($_POST['place']) && !empty($_POST['place']) ? $_POST['place'] : null,
                 'lising_seller_email' => isset($_POST['email']) && !empty($_POST['email']) ? $_POST['email'] : null,
                 'listing_seller_phone_number' => isset($_POST['phone']) && !empty($_POST['phone']) ? $_POST['phone'] : null
             )
