@@ -121,6 +121,14 @@ class FrontendForm
      */
     public function showForm()
     {
+        if (in_array('submission_logged_in', (array)get_field('listing_access_restrictions', 'option')) && !is_user_logged_in()) {
+            $msg = '<div class="grid"><div class="grid-md-12">' . __('You need to login to use the listing submission form.', 'wp-lisings') . '</div></div>';
+            $msg = apply_filters('wp-listings/form/login_required', $msg);
+
+            echo $msg;
+            return;
+        }
+
         $this->enqueueJs();
         $fieldgroups = \WpListings\Listings::getCategoryFieldgroups();
 
