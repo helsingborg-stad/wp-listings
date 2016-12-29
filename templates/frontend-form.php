@@ -3,7 +3,12 @@
     <div class="grid">
         <div class="grid-md-12">
             <div class="notice success">
-                Tack, vi har tagit emot din annons. Den väntar nu på granskning innan den publiceras.
+                <?php if (get_field('lising_review', 'option')) {
+                    _e('Thank you, we are now reviewing your listing. You will receive a email when your listing is published.');
+                } else {
+                    _e('Thank you, your listing is now published.');
+                }
+                ?>
             </div>
         </div>
     </div>

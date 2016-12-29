@@ -31,6 +31,7 @@ class FrontendForm
             'post_type' => \WpListings\Listings::$postTypeSlug,
             'post_title' => $_POST['title'],
             'post_content' => $_POST['description'],
+            'post_status' => get_field('lising_review', 'option') ? 'draft' : 'publish',
             'tax_input' => array(
                 \WpListings\Listings::$taxonomySlug => $_POST['category'],
                 \WpListings\Listings::$placesTaxonomySlug => $_POST['place']
