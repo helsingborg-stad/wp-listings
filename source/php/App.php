@@ -8,6 +8,19 @@ class App
 
     public function __construct()
     {
+        add_action('plugins_loaded', array($this, 'init'));
+    }
+
+    public function init()
+    {
+        if (!function_exists('get_field') && !function_exists('acf_add_options_page')) {
+            add_action('admin_notices', function () {
+                echo '<div class="notice notice-success is-dismissible"><p>', __('WP Listings: Please activate Advanced Custom Fields plugin to be able to use WP Listings.', 'wp-listings'), '</p></div>';
+            });
+
+            return;
+        }
+
         self::$uploadDir = $this->getUploadDir();
         add_filter('acf/settings/load_json', array($this, 'jsonLoadPath'));
 
