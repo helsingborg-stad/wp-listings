@@ -65,6 +65,42 @@ class FrontendForm
             update_post_meta($postId, $key, $value);
         }
 
+        // Upload images
+        $images = isset($_POST['image_uploader_file']) && is_array($_POST['image_uploader_file']) ? $_POST['image_uploader_file'] : null;
+        $uploadedImages = array();
+
+        if ($images) {
+            $uploader = new \WpListings\ImageUploader();
+
+            $i = 0;
+            foreach ($images as $base64image) {
+                $image = $uploader->uploadBase64($base64image);
+                $uploadedImages[] = $image['url'];
+
+                // Set as thumbnail if first image
+                if ($i == 0) {
+                    $attachmentId = wp_insert_attachment(
+                        array(
+                            'guid' => $image['url'],
+                            'post_mime_type' => wp_check_filetype(basename($image['url']), null)['type'],
+                            'post_title' => $_POST['title'],
+                            'post_content' => '',
+                            'post_status' => 'inherit'
+                        ),
+                        $image['path'],
+                        $postId
+                    );
+
+                    set_post_thumbnail($postId, $attachmentId);
+                }
+
+                $i++;
+            }
+        }
+
+        update_post_meta($postId, 'listings_images', $uploadedImages);
+
+        // All done, lets redirect back to form
         $redirect = $_SERVER['HTTP_REFERER'];
         if (strpos($redirect, '?') === false) {
             $redirect .= '?';
