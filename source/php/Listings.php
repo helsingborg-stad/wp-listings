@@ -26,6 +26,16 @@ class Listings extends \WpListings\Entity\PostType
 
         // Templates
         add_filter('template_include', array($this, 'loadTemplate'));
+
+        add_action('wp', function () {
+            if (get_post_type() === \WpListings\Listings::$postTypeSlug && in_array('view_logged_in', (array)get_field('listing_access_restrictions', 'option')) && !is_user_logged_in()) {
+                do_action('wp-listings/view/require_login');
+
+                global $wp_query;
+                $wp_query->set_404();
+                status_header(404);
+            }
+        });
     }
 
     /**
