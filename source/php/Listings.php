@@ -336,7 +336,7 @@ class Listings extends \WpListings\Entity\PostType
         );
 
         // Schedule deletion after X days
-        $daysToDelete = 30;
+        $daysToDelete = (int) get_field('listing_days_valid', 'option');
         $timestamp = time() + ($daysToDelete * (3600 * 24));
         wp_schedule_single_event($timestamp, 'delete_listing', array(
             $postId
