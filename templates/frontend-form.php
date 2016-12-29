@@ -4,9 +4,9 @@
         <div class="grid-md-12">
             <div class="notice success">
                 <?php if (get_field('lising_review', 'option')) {
-                    _e('Thank you, we are now reviewing your listing. You will receive a email when your listing is published.');
+                    _e('Thank you, we are now reviewing your listing. You will receive a email when your listing is published.', 'wp-lisings');
                 } else {
-                    _e('Thank you, your listing is now published.');
+                    _e('Thank you, your listing is now published.', 'wp-lisings');
                 }
                 ?>
             </div>
