@@ -1,0 +1,82 @@
+    {
+        "key": "group_5864e18caff24",
+        "title": "Listing options",
+        "fields": [
+            {
+                "key": "field_5864e1b07cd2d",
+                "label": "Days valid",
+                "name": "listing_days_valid",
+                "type": "number",
+                "instructions": "Number of days the listing is published (will be trashed after x days)",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": 30,
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "min": "",
+                "max": "",
+                "step": ""
+            },
+            {
+                "key": "field_5864e2877cd2f",
+                "label": "Review",
+                "name": "lising_review",
+                "type": "true_false",
+                "instructions": "If review is activated, newly submitted listings will be saved as drafts when waiting for review.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "Listings must be reviewed before publication",
+                "default_value": 0
+            },
+            {
+                "key": "field_5864e22a7cd2e",
+                "label": "Access restrictions",
+                "name": "listing_access_restrictions",
+                "type": "checkbox",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "submission_logged_in": "Only logged in users can submit new listings",
+                    "view_logged_in": "Only logged in users can view listings"
+                },
+                "default_value": [],
+                "layout": "vertical",
+                "toggle": 0,
+                "return_format": "value"
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "options_page",
+                    "operator": "==",
+                    "value": "listings-options"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": 1,
+        "description": ""
+    }
