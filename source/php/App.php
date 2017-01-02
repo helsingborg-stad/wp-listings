@@ -26,6 +26,7 @@ class App
 
         new \WpListings\Listings();
         new \WpListings\FrontendForm();
+        new \WpListings\SearchForm();
         new \WpListings\Options();
     }
 
