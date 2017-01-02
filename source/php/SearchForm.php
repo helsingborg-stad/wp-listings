@@ -16,6 +16,9 @@ class SearchForm
      */
     public function showForm()
     {
+        \WpListings\App::enqueueJs();
+        $fieldgroups = \WpListings\Listings::getCategoryFieldgroups();
+
         $template = apply_filters('wp-listings/search_template', WPLISTINGS_TEMPLATE_PATH . '/search-form.php');
         include_once $template;
     }

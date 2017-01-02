@@ -34,10 +34,9 @@
                             <label for="place"><?php _e('Place', 'wp-listings'); ?><span class="text-danger">*</span></label>
                             <?php
                             wp_dropdown_categories(array(
-                                'show_option_all' => __('All places', 'wp-listings'),
                                 'taxonomy' => \WpListings\Listings::$placesTaxonomySlug,
-                                'name' => 'palce',
-                                'id' => 'palce',
+                                'name' => 'place',
+                                'id' => 'place',
                                 'orderby' => 'name',
                                 'hide_empty' => false,
                                 'hierarchical' => true

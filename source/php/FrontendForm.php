@@ -6,11 +6,6 @@ class FrontendForm
 {
     public function __construct()
     {
-        // Register js
-        add_action('init', function () {
-            wp_register_script('wp-listings', WPLISTINGS_URL . '/dist/js/wp-listings.min.js', null, '1.0.0', true);
-        });
-
         // Add shortcode
         add_shortcode('wp-listings-form', array($this, 'showForm'));
 
@@ -129,7 +124,7 @@ class FrontendForm
             return;
         }
 
-        $this->enqueueJs();
+        \WpListings\App::enqueueJs();
         $fieldgroups = \WpListings\Listings::getCategoryFieldgroups();
 
         $template = apply_filters('wp-listings/form_template', WPLISTINGS_TEMPLATE_PATH . '/frontend-form.php');
@@ -138,29 +133,18 @@ class FrontendForm
     }
 
     /**
-     * Makes sure to enqueu the js in the footer
-     * @return void
-     */
-    public function enqueueJs()
-    {
-        add_action('wp_footer', function () {
-            wp_print_scripts('wp-listings');
-        }, 9999);
-    }
-
-    /**
      * Get markup for a field
      * @param  array $field  Acf field args
      * @return string
      */
-    public static function getFieldMarkup($field)
+    public static function getFieldMarkup($field, $forceRequired = null, $allOption = false, $current = false)
     {
         switch ($field['type']) {
             case 'select':
-                return self::getSelectField($field);
+                return self::getSelectField($field, $forceRequired, $allOption, $current);
 
             default:
-                return self::getTextField($field);
+                return self::getTextField($field, $forceRequired, $current);
         }
     }
 
@@ -169,18 +153,22 @@ class FrontendForm
      * @param  array $args  Field args (acf)
      * @return string       Field markup
      */
-    public static function getSelectField($args) : string
+    public static function getSelectField($args, $forceRequired = null, $allOption = false, $current = false) : string
     {
         $markup .= '<select name="' . $args['name'] . '" id="' . $args['key'] . '" placeholder="' . $args['placeholder'] . '" ';
 
-        if ($args['required']) {
+        if ($forceRequired === true || ($forceRequired === null && $args['required'])) {
             $markup .= 'required';
         }
 
         $markup .= '>';
 
+        if (is_string($allOption)) {
+            $markup .= '<option value="0">' . $allOption . '</option>';
+        }
+
         foreach ($args['choices'] as $choice) {
-            $markup .= '<option value="' . $choice . '">' . $choice . '</option>';
+            $markup .= '<option value="' . $choice . '" ' . selected($choice, $current, false) . '>' . $choice . '</option>';
         }
 
         $markup .= '</select>';
@@ -193,12 +181,16 @@ class FrontendForm
      * @param  array $args  Field args (acf)
      * @return string       Field markup
      */
-    public static function getTextField($args)
+    public static function getTextField($args, $forceRequired = null, $current = false)
     {
         $markup = '<input type="text" name="' . $args['name'] . '" id="' . $args['key'] . '" placeholder="' . $args['placeholder'] . '" ';
 
-        if ($args['required']) {
+        if ($forceRequired === true || ($forceRequired === null && $args['required'])) {
             $markup .= 'required';
+        }
+
+        if ($current) {
+            $markup .= ' value="' . $current . '"';
         }
 
         $markup .= '>';

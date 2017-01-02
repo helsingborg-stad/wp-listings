@@ -21,12 +21,16 @@ class App
             return;
         }
 
+        // Register js
+        wp_register_script('wp-listings', WPLISTINGS_URL . '/dist/js/wp-listings.min.js', null, '1.0.0', true);
+
         self::$uploadDir = $this->getUploadDir();
         add_filter('acf/settings/load_json', array($this, 'jsonLoadPath'));
 
         new \WpListings\Listings();
         new \WpListings\FrontendForm();
         new \WpListings\SearchForm();
+        new \WpListings\Search();
         new \WpListings\Options();
     }
 
@@ -61,5 +65,16 @@ class App
         }
 
         return $uploadDir;
+    }
+
+    /**
+     * Makes sure to enqueu the js in the footer
+     * @return void
+     */
+    public static function enqueueJs()
+    {
+        add_action('wp_footer', function () {
+            wp_print_scripts('wp-listings');
+        }, 9999);
     }
 }
