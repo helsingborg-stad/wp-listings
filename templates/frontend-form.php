@@ -169,7 +169,7 @@
                             <label for="price"><?php _e('Price', 'wp-listings'); ?><span class="text-danger">*</span></label>
                             <div class="input-group">
                                 <input type="number" name="price" min="0" step="1" class="form-control" required>
-                                <span class="input-group-addon"><?php echo apply_filters('wp-listings/currency', 'SEK'); ?></span>
+                                <span class="input-group-addon"><?php echo apply_filters('wp-listings/currency', ':-'); ?></span>
                             </div>
                         </div>
                     </div>
