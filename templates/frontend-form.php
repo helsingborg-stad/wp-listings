@@ -32,11 +32,17 @@
                     <div class="grid-md-12">
                         <div class="form-group">
                             <label for="place"><?php _e('Place', 'wp-listings'); ?><span class="text-danger">*</span></label>
-                            <select name="place" id="place" required>
-                                <?php foreach (\WpListings\Listings::places() as $place) : ?>
-                                <option value="<?php echo $place->term_id; ?>"><?php echo $place->name; ?></option>
-                                <?php endforeach; ?>
-                            </select>
+                            <?php
+                            wp_dropdown_categories(array(
+                                'show_option_all' => __('All places', 'wp-listings'),
+                                'taxonomy' => \WpListings\Listings::$placesTaxonomySlug,
+                                'name' => 'palce',
+                                'id' => 'palce',
+                                'orderby' => 'name',
+                                'hide_empty' => false,
+                                'hierarchical' => true
+                            ));
+                            ?>
                         </div>
                     </div>
                 </div>
