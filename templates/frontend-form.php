@@ -110,10 +110,10 @@
                                     <i class="fa fa-plus-circle fa-stack-1x"></i>
                                 </span>
                                 <div class="placeholder-text">
-                                    <span class="placeholder-text-drag"><?php _e('Drag a photo here', 'municipio-intranet'); ?></span>
+                                    <span class="placeholder-text-drag"><?php _e('Drag a photo here', 'wp-listings'); ?></span>
                                     <span class="placeholder-text-browse">
-                                        <em class="placeholder-text-or"><?php _e('or', 'municipio-intranet'); ?></em>
-                                        <label for="listing-image-1" class="btn btn-secondary btn-select-file"><?php _e('Select a photo', 'municipio-intranet'); ?></label>
+                                        <em class="placeholder-text-or"><?php _e('or', 'wp-listings'); ?></em>
+                                        <label for="listing-image-1" class="btn btn-secondary btn-select-file"><?php _e('Select a photo', 'wp-listings'); ?></label>
                                     </span>
                                 </div>
                             </div>
@@ -131,10 +131,10 @@
                                     <i class="fa fa-plus-circle fa-stack-1x"></i>
                                 </span>
                                 <div class="placeholder-text">
-                                    <span class="placeholder-text-drag"><?php _e('Drag a photo here', 'municipio-intranet'); ?></span>
+                                    <span class="placeholder-text-drag"><?php _e('Drag a photo here', 'wp-listings'); ?></span>
                                     <span class="placeholder-text-browse">
-                                        <em class="placeholder-text-or"><?php _e('or', 'municipio-intranet'); ?></em>
-                                        <label for="listing-image-2" class="btn btn-secondary btn-select-file"><?php _e('Select a photo', 'municipio-intranet'); ?></label>
+                                        <em class="placeholder-text-or"><?php _e('or', 'wp-listings'); ?></em>
+                                        <label for="listing-image-2" class="btn btn-secondary btn-select-file"><?php _e('Select a photo', 'wp-listings'); ?></label>
                                     </span>
                                 </div>
                             </div>
@@ -152,10 +152,10 @@
                                     <i class="fa fa-plus-circle fa-stack-1x"></i>
                                 </span>
                                 <div class="placeholder-text">
-                                    <span class="placeholder-text-drag"><?php _e('Drag a photo here', 'municipio-intranet'); ?></span>
+                                    <span class="placeholder-text-drag"><?php _e('Drag a photo here', 'wp-listings'); ?></span>
                                     <span class="placeholder-text-browse">
-                                        <em class="placeholder-text-or"><?php _e('or', 'municipio-intranet'); ?></em>
-                                        <label for="listing-image-3" class="btn btn-secondary btn-select-file"><?php _e('Select a photo', 'municipio-intranet'); ?></label>
+                                        <em class="placeholder-text-or"><?php _e('or', 'wp-listings'); ?></em>
+                                        <label for="listing-image-3" class="btn btn-secondary btn-select-file"><?php _e('Select a photo', 'wp-listings'); ?></label>
                                     </span>
                                 </div>
                             </div>
@@ -208,7 +208,7 @@
                     <div class="grid-md-12">
                         <div class="form-group">
                             <label class="checkbox">
-                                <input type="checkbox" name="hide_phone" value="1"> <?php _e('Hide my phone number', 'wp-lisings'); ?>
+                                <input type="checkbox" name="hide_phone" value="1"> <?php _e('Hide my phone number', 'wp-listings'); ?>
                             </label>
                         </div>
                     </div>

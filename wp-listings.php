@@ -2,11 +2,11 @@
 
 /**
  * Plugin Name:       WP Listings
- * Plugin URI:        
+ * Plugin URI:
  * Description:       A simple listings plugin to use for example buy and sell
  * Version:           1.0.0
  * Author:            Kristoffer Svanmark
- * Author URI:        
+ * Author URI:
  * License:           MIT
  * License URI:       https://opensource.org/licenses/MIT
  * Text Domain:       wp-listings
