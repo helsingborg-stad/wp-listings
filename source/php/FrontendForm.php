@@ -98,6 +98,8 @@ class FrontendForm
 
         update_post_meta($postId, 'listings_images', $uploadedImages);
 
+        do_action('wp-listings/frontend_form/after_submit');
+
         // All done, lets redirect back to form
         $redirect = $_SERVER['HTTP_REFERER'];
         if (strpos($redirect, '?') === false) {
@@ -105,8 +107,6 @@ class FrontendForm
         } else {
             $redirect .= '&';
         }
-
-        do_action('wp-listings/frontend_form/after_submit');
 
         $redirect .= 'wp-listings-form=success';
 

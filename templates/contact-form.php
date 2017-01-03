@@ -1,4 +1,14 @@
 <form method="post" action="" class="creamy gutter gutter-lg">
+    <?php if (isset($_GET['wp-listings-form']) && $_GET['wp-listings-form'] == 'success') : ?>
+    <div class="grid gutter gutter-bottom">
+        <div class="grid-md-12">
+            <div class="notice success">
+                <?php _e('Your message has been delivered to the seller.', 'wp-lisings'); ?>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
+
     <?php wp_nonce_field('contact_seller', 'wp-listings', true, true); ?>
     <input type="hidden" name="listing_id" value="<?php echo get_the_id(); ?>">
 

@@ -46,7 +46,18 @@ class ContactForm
 
         do_action('wp-listings/contact/after_submit');
 
-        return $mail;
+        // All done, lets redirect back to form
+        $redirect = $_SERVER['HTTP_REFERER'];
+        if (strpos($redirect, '?') === false) {
+            $redirect .= '?';
+        } else {
+            $redirect .= '&';
+        }
+
+        $redirect .= 'wp-listings-form=success';
+
+        wp_redirect($redirect);
+        exit;
     }
 
     public function showForm()
