@@ -1,0 +1,294 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: WP Listings\n"
+"POT-Creation-Date: 2017-01-03 09:33+0100\n"
+"PO-Revision-Date: 2017-01-03 09:45+0100\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: wp-listings.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Last-Translator: \n"
+"Language: sv\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: source/php/App.php:18
+msgid ""
+"WP Listings: Please activate Advanced Custom Fields plugin to be able to use "
+"WP Listings."
+msgstr ""
+"WP Listings: Du måste aktivera pluginet Advanced Custom Fields för att kunna "
+"använda WP Listings."
+
+#: source/php/ContactForm.php:31
+msgid "Re: "
+msgstr "Sv: "
+
+#: source/php/ContactForm.php:35
+#, php-format
+msgid "You have got a new message about your ad \"%1$s\" from %2$s, <%3$s>"
+msgstr ""
+"Du har fått ett nytt meddelande angående din annons \"%1$s\" från %2$s, <"
+"%3$s>"
+
+#: source/php/ContactForm.php:66 source/php/FrontendForm.php:124
+msgid "You need to login to use the listing submission form."
+msgstr "Du måste logga in för att kunna lägga in en annons."
+
+#: source/php/Entity/PostType.php:48 source/php/Entity/PostType.php:49
+#, php-format
+msgid "Add new %s"
+msgstr "Skapa ny %s"
+
+#: source/php/Entity/PostType.php:50 source/php/Entity/Taxonomy.php:33
+#, php-format
+msgid "Edit %s"
+msgstr "Redigera %s"
+
+#: source/php/Entity/PostType.php:51
+#, php-format
+msgid "New %s"
+msgstr "Ny %s"
+
+#: source/php/Entity/PostType.php:52
+#, php-format
+msgid "View %s"
+msgstr "Visa %s"
+
+#: source/php/Entity/PostType.php:53 source/php/Entity/Taxonomy.php:29
+#, php-format
+msgid "Search %s"
+msgstr "Sök %s"
+
+#: source/php/Entity/PostType.php:54
+#, php-format
+msgid "No %s found"
+msgstr "Inga %s hittades"
+
+#: source/php/Entity/PostType.php:55
+#, php-format
+msgid "No %s found in trash"
+msgstr "Inga %s hittades i papperskorgen"
+
+#: source/php/Entity/PostType.php:56 source/php/Entity/Taxonomy.php:31
+#: source/php/Entity/Taxonomy.php:32
+#, php-format
+msgid "Parent %s:"
+msgstr "Förälder %s:"
+
+#: source/php/Entity/Taxonomy.php:30
+#, php-format
+msgid "All %s"
+msgstr "Alla %s"
+
+#: source/php/Entity/Taxonomy.php:34
+#, php-format
+msgid "Update %s"
+msgstr "Uppdatera %s"
+
+#: source/php/Entity/Taxonomy.php:35
+#, php-format
+msgid "Add New %s"
+msgstr "Skapa ny %s"
+
+#: source/php/Entity/Taxonomy.php:36
+#, php-format
+msgid "New %s Name"
+msgstr "Nytt %s namn"
+
+#: source/php/Listings.php:49
+msgctxt "Post type plural"
+msgid "Listings"
+msgstr ""
+
+#: source/php/Listings.php:50
+msgctxt "Post type singular"
+msgid "Listing"
+msgstr ""
+
+#: source/php/Listings.php:73 source/php/Listings.php:117
+#: templates/frontend-form.php:52
+msgid "Category"
+msgstr "Kategori"
+
+#: source/php/Listings.php:91 source/php/Listings.php:132
+#: templates/frontend-form.php:34
+msgid "Place"
+msgstr "Plats"
+
+#: source/php/Listings.php:118
+msgid "Categories"
+msgstr "Kategorier"
+
+#: source/php/Listings.php:133
+msgid "Places"
+msgstr "Platser"
+
+#: source/php/Listings.php:340
+msgid "Listing published"
+msgstr "Annons publicerad"
+
+#: source/php/Listings.php:342
+#, php-format
+msgid ""
+"Congratulations %s! Your listing is now approved and published. You can see "
+"your listing here: %s"
+msgstr ""
+"Grattis %s. Din annons är nu godkänd och publicerad. Du kan se din annons "
+"här: %s"
+
+#: source/php/Listings.php:373
+msgid "Listing unpublished"
+msgstr "Annons avpublicerad"
+
+#: source/php/Listings.php:375
+#, php-format
+msgid ""
+"Hi %s! Your listing \"%s\" is now %d days old and therefor it has beed "
+"unpublished."
+msgstr ""
+"Hej %s! Din annons ”%s” är nu %d dagar gammal och har därför avpublicerats."
+
+#: templates/contact-form.php:6
+msgid "Your message has been delivered to the seller."
+msgstr "Ditt meddelande har levererats till säljaren."
+
+#: templates/contact-form.php:15
+msgid "Contact the seller"
+msgstr "Kontakta säljaren"
+
+#: templates/contact-form.php:18
+msgid "Phone number"
+msgstr "Telefonnummer"
+
+#: templates/contact-form.php:21
+msgid "Send email"
+msgstr "Skicka e-post"
+
+#: templates/contact-form.php:25 templates/frontend-form.php:186
+msgid "Your name"
+msgstr "Ditt namn"
+
+#: templates/contact-form.php:31
+msgid "Your email"
+msgstr "Din e-postadress"
+
+#: templates/contact-form.php:40
+msgid "Message"
+msgstr "Meddelande"
+
+#: templates/contact-form.php:48
+msgid "Send"
+msgstr "Skicka"
+
+#: templates/frontend-form.php:7
+msgid ""
+"Thank you, we are now reviewing your listing. You will receive a email when "
+"your listing is published."
+msgstr ""
+"Tack, din annons kommer att granskas av oss. Vi meddelar dig via e-post när "
+"din annons är publicerad."
+
+#: templates/frontend-form.php:9
+msgid "Thank you, your listing is now published."
+msgstr "Tack, din annons är nu publicerad."
+
+#: templates/frontend-form.php:25
+msgid "Title"
+msgstr "Titel"
+
+#: templates/frontend-form.php:89
+msgid "Description"
+msgstr "Beskrivning"
+
+#: templates/frontend-form.php:98
+msgid "Images"
+msgstr "Bilder"
+
+#: templates/frontend-form.php:100
+msgid "Note: The first image will be the main image for the listing."
+msgstr "Notera: Första bilden kommer användas som huvudbild för annonsen."
+
+#: templates/frontend-form.php:101
+msgid "Max filesize"
+msgstr "Max filstorlek"
+
+#: templates/frontend-form.php:102
+msgid "Allowed filetypes"
+msgstr "Tillåtna filtyper"
+
+#: templates/frontend-form.php:113 templates/frontend-form.php:134
+#: templates/frontend-form.php:155
+msgid "Drag a photo here"
+msgstr "Dra en bild hit"
+
+#: templates/frontend-form.php:115 templates/frontend-form.php:136
+#: templates/frontend-form.php:157
+msgid "or"
+msgstr "eller"
+
+#: templates/frontend-form.php:116 templates/frontend-form.php:137
+#: templates/frontend-form.php:158
+msgid "Select a photo"
+msgstr "Välj en bild"
+
+#: templates/frontend-form.php:121 templates/frontend-form.php:142
+#: templates/frontend-form.php:163
+msgid "Drop here"
+msgstr "Släpp här"
+
+#: templates/frontend-form.php:174
+msgid "Price"
+msgstr "Pris"
+
+#: templates/frontend-form.php:195
+msgid "Your email address"
+msgstr "Din e-postadress"
+
+#: templates/frontend-form.php:201
+msgid "Your phone number"
+msgstr "Ditt telefonnummer"
+
+#: templates/frontend-form.php:211
+msgid "Hide my phone number"
+msgstr "Visa inte mitt telefonnummer"
+
+#: templates/frontend-form.php:219
+msgid "Submit"
+msgstr "Skicka"
+
+#: templates/search-form.php:6 templates/search-form.php:42
+msgid "Search"
+msgstr "Sök"
+
+#: templates/search-form.php:13
+msgid "All categories"
+msgstr "Alla kategorier"
+
+#: templates/search-form.php:29
+msgid "All places"
+msgstr "Alla platser"
+
+#: templates/search-form.php:58
+msgid "All"
+msgstr "Alla"
+
+#. Plugin Name of the plugin/theme
+msgid "WP Listings"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "A simple listings plugin to use for example buy and sell"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Kristoffer Svanmark"
+msgstr ""
