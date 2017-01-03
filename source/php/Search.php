@@ -14,11 +14,11 @@ class Search
 
     public function shouldFilter(\WP_Query $query)
     {
-        if (is_admin() || !($query->is_main_query() && $query->is_search() && $query->is_archive())) {
-            return false;
+        if (!is_admin() && is_post_type_archive(\WpListings\Listings::$postTypeSlug) && $query->is_main_query() && $query->is_search()) {
+            return true;
         }
 
-        return true;
+        return false;
     }
 
     public function taxonomy($query)
