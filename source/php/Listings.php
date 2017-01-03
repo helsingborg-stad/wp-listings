@@ -333,7 +333,7 @@ class Listings extends \WpListings\Entity\PostType
 
         // Send notification mail to seller
         $sellerName = get_post_meta($postid, 'listing_seller_name', true);
-        $sellerEmail = get_post_meta($postId, 'lising_seller_email', true);
+        $sellerEmail = get_post_meta($postId, 'listing_seller_email', true);
 
         wp_mail(
             $sellerEmail,
@@ -366,7 +366,7 @@ class Listings extends \WpListings\Entity\PostType
 
         // Notify seller
         $sellerName = get_post_meta($postid, 'listing_seller_name', true);
-        $sellerEmail = get_post_meta($postId, 'lising_seller_email', true);
+        $sellerEmail = get_post_meta($postId, 'listing_seller_email', true);
 
         wp_mail(
             $sellerEmail,

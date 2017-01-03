@@ -34,7 +34,7 @@ class FrontendForm
             'meta_input' => array(
                 'listing_price' => isset($_POST['price']) && !empty($_POST['price']) ? $_POST['price'] : 0,
                 'listing_seller_name' => isset($_POST['name']) && !empty($_POST['name']) ? $_POST['name'] : null,
-                'lising_seller_email' => isset($_POST['email']) && !empty($_POST['email']) ? $_POST['email'] : null,
+                'listing_seller_email' => isset($_POST['email']) && !empty($_POST['email']) ? $_POST['email'] : null,
                 'listing_seller_phone_number' => isset($_POST['phone']) && !empty($_POST['phone']) ? $_POST['phone'] : null,
                 'listing_display_seller_phone_number' => isset($_POST['hide_phone']) && $_POST['hide_phone'] == 1 ? 0 : 1
             )

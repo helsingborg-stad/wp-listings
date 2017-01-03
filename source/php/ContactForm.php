@@ -16,7 +16,15 @@ class ContactForm
             return;
         }
 
-        var_dump("CONTACT SELLER");
+        $listing = get_post($_POST['listing_id']);
+
+        if (!$listing) {
+            return false;
+        }
+
+        $seller = get_post_meta($listing->ID, 'listing_seller_email', true);
+        var_dump($seller);
+
         exit;
     }
 

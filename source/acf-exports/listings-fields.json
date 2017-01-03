@@ -45,7 +45,7 @@
             {
                 "key": "field_585ce14e0ee92",
                 "label": "Seller email",
-                "name": "lising_seller_email",
+                "name": "listing_seller_email",
                 "type": "email",
                 "instructions": "",
                 "required": 1,
