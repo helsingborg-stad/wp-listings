@@ -8,8 +8,8 @@ class Search
 
     public function __construct()
     {
-        add_filter('pre_get_posts', array($this, 'taxonomy'));
-        add_filter('pre_get_posts', array($this, 'meta'));
+        add_action('pre_get_posts', array($this, 'taxonomy'));
+        add_action('pre_get_posts', array($this, 'meta'));
     }
 
     public function shouldFilter(\WP_Query $query)
