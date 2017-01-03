@@ -30,6 +30,7 @@ class App
         new \WpListings\Listings();
         new \WpListings\FrontendForm();
         new \WpListings\SearchForm();
+        new \WpListings\ContactForm();
         new \WpListings\Search();
         new \WpListings\Options();
     }
