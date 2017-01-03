@@ -16,16 +16,37 @@ class ContactForm
             return;
         }
 
+        do_action('wp-listings/contact/before_submit');
+
         $listing = get_post($_POST['listing_id']);
 
         if (!$listing) {
             return false;
         }
 
-        $seller = get_post_meta($listing->ID, 'listing_seller_email', true);
-        var_dump($seller);
+        $fromName = sanitize_text_field($_POST['name']);
+        $fromEmail = sanitize_text_field($_POST['email']);
 
-        exit;
+        $seller = get_post_meta($listing->ID, 'listing_seller_email', true);
+        $subject = apply_filters('wp-listings/contact/email/subject', __('Re: ' . $listing->post_title), $listing);
+        $message = apply_filters(
+            'wp-listings/contact/email/message',
+            sprintf(
+                '<strong>' . __('You have got a new message about your ad "%1$s" from %2$s, <%3$s>') . '</strong><br><br>%4$s',
+                '<a href="' . get_permalink($listing->ID) . '">' . $listing->post_title . '</a>',
+                $fromName,
+                $fromEmail,
+                $_POST['message']
+            ),
+            $listing
+        );
+        $headers = array('Content-type: text/html; charset=UTF-8', 'From: ' . $fromName . ' <' . $fromEmail . '>');
+
+        $mail = wp_mail($seller, $subject, $message, $headers);
+
+        do_action('wp-listings/contact/after_submit');
+
+        return $mail;
     }
 
     public function showForm()

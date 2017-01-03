@@ -22,6 +22,8 @@ class FrontendForm
             return false;
         }
 
+        do_action('wp-listings/frontend_form/before_submit');
+
         $postId = wp_insert_post(array(
             'post_type' => \WpListings\Listings::$postTypeSlug,
             'post_title' => $_POST['title'],
@@ -103,6 +105,8 @@ class FrontendForm
         } else {
             $redirect .= '&';
         }
+
+        do_action('wp-listings/frontend_form/after_submit');
 
         $redirect .= 'wp-listings-form=success';
 

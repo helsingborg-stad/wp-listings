@@ -1,5 +1,6 @@
 <form method="post" action="" class="creamy gutter gutter-lg">
     <?php wp_nonce_field('contact_seller', 'wp-listings', true, true); ?>
+    <input type="hidden" name="listing_id" value="<?php echo get_the_id(); ?>">
 
     <h2><?php _e('Contact the seller', 'municipio'); ?></h2>
 
