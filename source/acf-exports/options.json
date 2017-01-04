@@ -40,6 +40,38 @@
                 "default_value": 0
             },
             {
+                "key": "field_586cbfd43dd68",
+                "label": "Contact form",
+                "name": "listing_contact_seller_form",
+                "type": "true_false",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "Show the contact seller form",
+                "default_value": 0
+            },
+            {
+                "key": "field_586cc0083dd69",
+                "label": "Price",
+                "name": "listing_price",
+                "type": "true_false",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "Listings should use price field",
+                "default_value": 1
+            },
+            {
                 "key": "field_5864e22a7cd2e",
                 "label": "Access restrictions",
                 "name": "listing_access_restrictions",
