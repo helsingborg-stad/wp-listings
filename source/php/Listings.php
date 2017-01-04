@@ -252,7 +252,7 @@ class Listings extends \WpListings\Entity\PostType
             'label' => $field['label'],
             'name' => sanitize_title($field['label']),
             'instructions' => '',
-            'required' => 1,
+            'required' => in_array('required', $field['options']),
             'conditional_logic' => 0,
             'wrapper' => array(
                 'width' => '',
@@ -264,6 +264,7 @@ class Listings extends \WpListings\Entity\PostType
             'prepend' => '',
             'append' => '',
             'maxlength' => '',
+            'wp_listings_options' => $field['options']
         );
 
         switch ($field['type']) {
