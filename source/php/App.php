@@ -22,7 +22,9 @@ class App
         }
 
         // Register js
-        wp_register_script('wp-listings', WPLISTINGS_URL . '/dist/js/wp-listings.min.js', null, '1.0.0', true);
+        add_filter('wp_enqueue_scripts', function () {
+            wp_register_script('wp-listings', WPLISTINGS_URL . '/dist/js/wp-listings.min.js', null, '1.0.0', true);
+        });
 
         self::$uploadDir = $this->getUploadDir();
         add_filter('acf/settings/load_json', array($this, 'jsonLoadPath'));
