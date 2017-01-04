@@ -70,8 +70,12 @@ class ContactForm
             return;
         }
 
+        if (!wp_listings_show_contact_form()) {
+            return;
+        }
+
         $template = apply_filters('wp-listings/contact_template', WPLISTINGS_TEMPLATE_PATH . '/contact-form.php');
 
-        include_once $template;
+        include $template;
     }
 }
