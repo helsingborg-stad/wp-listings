@@ -19,7 +19,7 @@
                 "min": 0,
                 "max": "",
                 "layout": "block",
-                "button_label": "L\u00e4gg till rad",
+                "button_label": "Add field",
                 "sub_fields": [
                     {
                         "key": "field_585ce642601e3",
@@ -64,7 +64,7 @@
                             "show": "Show in listing",
                             "searchable": "Searchable"
                         },
-                        "default_value": [],
+                        "default_value": ["required", "show", "searchable"],
                         "layout": "horizontal",
                         "toggle": 0,
                         "return_format": "value"
@@ -113,7 +113,7 @@
                         "min": "",
                         "max": "",
                         "layout": "table",
-                        "button_label": "L\u00e4gg till rad",
+                        "button_label": "Add choice",
                         "sub_fields": [
                             {
                                 "key": "field_585ce6c5601e6",
