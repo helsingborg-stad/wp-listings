@@ -49,7 +49,7 @@
                     {
                         "key": "field_586cef6dd450e",
                         "label": "Options",
-                        "name": "args",
+                        "name": "options",
                         "type": "checkbox",
                         "instructions": "",
                         "required": 0,
