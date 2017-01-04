@@ -47,6 +47,29 @@
                         "placeholder": ""
                     },
                     {
+                        "key": "field_586cef6dd450e",
+                        "label": "",
+                        "name": "args",
+                        "type": "checkbox",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "choices": {
+                            "required": "Required for submission",
+                            "show": "Show in listing",
+                            "searchable": "Searchable"
+                        },
+                        "default_value": [],
+                        "layout": "horizontal",
+                        "toggle": 0,
+                        "return_format": "value"
+                    },
+                    {
                         "key": "field_585ce6a3601e4",
                         "label": "Label",
                         "name": "label",
@@ -67,7 +90,7 @@
                     },
                     {
                         "key": "field_585ce6b6601e5",
-                        "label": "Alternatives",
+                        "label": "Choices",
                         "name": "alternatives",
                         "type": "repeater",
                         "instructions": "",
