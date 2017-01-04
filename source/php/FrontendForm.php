@@ -18,7 +18,7 @@ class FrontendForm
      */
     public function submitForm()
     {
-        if (!wp_verify_nonce($_REQUEST['wp-listing-nonce'], 'wp-listing-add')) {
+        if (!isset($_REQUEST['wp-listing-nonce']) || !wp_verify_nonce($_REQUEST['wp-listing-nonce'], 'wp-listing-add')) {
             return false;
         }
 
