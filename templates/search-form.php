@@ -47,6 +47,10 @@
         foreach ($fieldgroups as $fieldgroup) :
             $fieldgroupKey = explode('_', $fieldgroup['key']);
             $fieldgroupKey = $fieldgroupKey[count($fieldgroupKey)-1];
+
+            $fieldgroup['fields'] = array_filter($fieldgroup['fields'], function ($field) {
+                return !isset($field['wp_listings_options']) || in_array('searchable', $field['wp_listings_options']);
+            });
         ?>
         <fieldset class="grid" data-fieldgroup-key="<?php echo $fieldgroupKey; ?>" style="display: none;" disabled>
             <div class="grid-md-12">
