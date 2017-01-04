@@ -168,6 +168,7 @@
                     </div>
                 </div>
 
+                <?php if (wp_listings_use_price()) : ?>
                 <div class="grid">
                     <div class="grid-md-12">
                         <div class="form-group">
@@ -179,6 +180,7 @@
                         </div>
                     </div>
                 </div>
+                <?php endif; ?>
 
                 <div class="grid">
                     <div class="grid-md-12">
