@@ -62,6 +62,10 @@ class Search
         $fields = array_diff_key($_GET, array_flip($this->skip));
 
         foreach ($fields as $field => $value) {
+            if (empty($value)) {
+                continue;
+            }
+
             $metaQuery[] = array(
                 'key' => $field,
                 'value' => $value,
