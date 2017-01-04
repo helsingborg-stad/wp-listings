@@ -159,7 +159,7 @@ class FrontendForm
      */
     public static function getSelectField($args, $forceRequired = null, $allOption = false, $current = false) : string
     {
-        $markup .= '<select name="' . $args['name'] . '" id="' . $args['key'] . '" placeholder="' . $args['placeholder'] . '" ';
+        $markup = '<select name="' . $args['name'] . '" id="' . $args['key'] . '" placeholder="' . $args['placeholder'] . '" ';
 
         if ($forceRequired === true || ($forceRequired === null && $args['required'])) {
             $markup .= 'required';
