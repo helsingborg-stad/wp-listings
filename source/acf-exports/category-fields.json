@@ -48,7 +48,7 @@
                     },
                     {
                         "key": "field_586cef6dd450e",
-                        "label": "",
+                        "label": "Options",
                         "name": "args",
                         "type": "checkbox",
                         "instructions": "",
