@@ -23,7 +23,6 @@ You probably want to create a ```archive-listings``` and a ```single-listings```
 
 Displays the listings submission form.
 
-
 #### [wp-listings-search-form]
 
 Displays the search form. You can use this shortcode in your ```archive-listings``` template to display the search form there.
