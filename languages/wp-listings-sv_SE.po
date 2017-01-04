@@ -3,7 +3,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Project-Id-Version: WP Listings\n"
 "POT-Creation-Date: 2017-01-03 09:33+0100\n"
-"PO-Revision-Date: 2017-01-03 09:45+0100\n"
+"PO-Revision-Date: 2017-01-04 09:29+0100\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -107,12 +107,12 @@ msgstr "Nytt %s namn"
 #: source/php/Listings.php:49
 msgctxt "Post type plural"
 msgid "Listings"
-msgstr ""
+msgstr "Annonser"
 
 #: source/php/Listings.php:50
 msgctxt "Post type singular"
 msgid "Listing"
-msgstr ""
+msgstr "Annons"
 
 #: source/php/Listings.php:73 source/php/Listings.php:117
 #: templates/frontend-form.php:52
@@ -283,11 +283,11 @@ msgstr "Alla"
 
 #. Plugin Name of the plugin/theme
 msgid "WP Listings"
-msgstr ""
+msgstr "WP Listings (Annonsverktyg)"
 
 #. Description of the plugin/theme
 msgid "A simple listings plugin to use for example buy and sell"
-msgstr ""
+msgstr "Ett simpelt annonshanteringsverktyg för WordPress. "
 
 #. Author of the plugin/theme
 msgid "Kristoffer Svanmark"
