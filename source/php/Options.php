@@ -12,7 +12,7 @@ class Options
     public function createOptionsPage()
     {
         acf_add_options_page(array(
-            'page_title' => 'Options',
+            'page_title' => __('Options', 'wp-lisings'),
             'menu_slug' => 'listings-options',
             'capability' => 'edit_posts',
             'parent_slug' => 'edit.php?post_type=listing'
