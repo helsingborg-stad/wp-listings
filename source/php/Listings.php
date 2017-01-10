@@ -58,7 +58,7 @@ class Listings extends \WpListings\Entity\PostType
                 'show_in_nav_menus'    =>   true,
                 'has_archive'          =>   true,
                 'rewrite'              =>   array(
-                    'slug'       =>   'listing',
+                    'slug'       =>   __('listing','Post Type slug', 'wp-listings'),
                     'with_front' =>   false
                 ),
                 'hierarchical'          =>  false,
