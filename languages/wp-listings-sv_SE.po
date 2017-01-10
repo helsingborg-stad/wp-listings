@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WP Listings\n"
-"POT-Creation-Date: 2017-01-10 10:36+0100\n"
-"PO-Revision-Date: 2017-01-10 10:36+0100\n"
+"POT-Creation-Date: 2017-01-10 15:15+0100\n"
+"PO-Revision-Date: 2017-01-10 15:15+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -165,6 +165,10 @@ msgstr ""
 msgid "Options"
 msgstr "Inställningar"
 
+#: source/php/Single.php:17
+msgid "Back to listing"
+msgstr "Tillbaka till annonslista"
+
 #: templates/contact-form.php:6
 msgid "Your message has been delivered to the seller."
 msgstr "Ditt meddelande har levererats till säljaren."
@@ -196,6 +200,10 @@ msgstr "Meddelande"
 #: templates/contact-form.php:48
 msgid "Send"
 msgstr "Skicka"
+
+#: templates/description.php:25
+msgid "Add new listing"
+msgstr "Lägg till ny annons"
 
 #: templates/frontend-form.php:7
 msgid ""

@@ -48,4 +48,5 @@
             <input type="submit" class="btn btn-primary" value="<?php _e('Send', 'wp-listings'); ?>">
         </div>
     </div>
+
 </form>
