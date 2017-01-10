@@ -16,7 +16,9 @@
 
         <?php if (!empty($settings['description']))  { ?>
             <div class="grid-xs-<?php echo $fullWidth ? '12' : '8'; ?>">
-                <?php echo apply_filters('the_content', $settings['description']); ?>
+                <article>
+                    <?php echo apply_filters('the_content', $settings['description']); ?>
+                </article>
             </div>
         <?php } ?>
 
