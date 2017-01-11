@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WP Listings\n"
-"POT-Creation-Date: 2017-01-04 09:43+0100\n"
-"PO-Revision-Date: 2017-01-04 09:43+0100\n"
+"POT-Creation-Date: 2017-01-10 15:15+0100\n"
+"PO-Revision-Date: 2017-01-10 15:15+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -114,6 +114,10 @@ msgctxt "Post type singular"
 msgid "Listing"
 msgstr "Annons"
 
+#: source/php/Listings.php:61
+msgid "listing"
+msgstr "annons"
+
 #: source/php/Listings.php:73 source/php/Listings.php:117
 #: templates/frontend-form.php:52
 msgid "Category"
@@ -132,11 +136,11 @@ msgstr "Kategorier"
 msgid "Places"
 msgstr "Platser"
 
-#: source/php/Listings.php:340
+#: source/php/Listings.php:341
 msgid "Listing published"
 msgstr "Annons publicerad"
 
-#: source/php/Listings.php:342
+#: source/php/Listings.php:343
 #, php-format
 msgid ""
 "Congratulations %s! Your listing is now approved and published. You can see "
@@ -145,11 +149,11 @@ msgstr ""
 "Grattis %s. Din annons är nu godkänd och publicerad. Du kan se din annons "
 "här: %s"
 
-#: source/php/Listings.php:373
+#: source/php/Listings.php:374
 msgid "Listing unpublished"
 msgstr "Annons avpublicerad"
 
-#: source/php/Listings.php:375
+#: source/php/Listings.php:376
 #, php-format
 msgid ""
 "Hi %s! Your listing \"%s\" is now %d days old and therefor it has beed "
@@ -160,6 +164,10 @@ msgstr ""
 #: source/php/Options.php:15
 msgid "Options"
 msgstr "Inställningar"
+
+#: source/php/Single.php:17
+msgid "Back to listing"
+msgstr "Tillbaka till annonslista"
 
 #: templates/contact-form.php:6
 msgid "Your message has been delivered to the seller."
@@ -177,7 +185,7 @@ msgstr "Telefonnummer"
 msgid "Send email"
 msgstr "Skicka e-post"
 
-#: templates/contact-form.php:25 templates/frontend-form.php:186
+#: templates/contact-form.php:25 templates/frontend-form.php:188
 msgid "Your name"
 msgstr "Ditt namn"
 
@@ -192,6 +200,10 @@ msgstr "Meddelande"
 #: templates/contact-form.php:48
 msgid "Send"
 msgstr "Skicka"
+
+#: templates/description.php:25
+msgid "Add new listing"
+msgstr "Lägg till ny annons"
 
 #: templates/frontend-form.php:7
 msgid ""
@@ -249,23 +261,23 @@ msgstr "Välj en bild"
 msgid "Drop here"
 msgstr "Släpp här"
 
-#: templates/frontend-form.php:174
+#: templates/frontend-form.php:175
 msgid "Price"
 msgstr "Pris"
 
-#: templates/frontend-form.php:195
+#: templates/frontend-form.php:197
 msgid "Your email address"
 msgstr "Din e-postadress"
 
-#: templates/frontend-form.php:201
+#: templates/frontend-form.php:203
 msgid "Your phone number"
 msgstr "Ditt telefonnummer"
 
-#: templates/frontend-form.php:211
+#: templates/frontend-form.php:213
 msgid "Hide my phone number"
 msgstr "Visa inte mitt telefonnummer"
 
-#: templates/frontend-form.php:219
+#: templates/frontend-form.php:221
 msgid "Submit"
 msgstr "Skicka"
 
@@ -281,7 +293,7 @@ msgstr "Alla kategorier"
 msgid "All places"
 msgstr "Alla platser"
 
-#: templates/search-form.php:58
+#: templates/search-form.php:62
 msgid "All"
 msgstr "Alla"
 

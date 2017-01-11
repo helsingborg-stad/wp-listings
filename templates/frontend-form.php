@@ -4,9 +4,9 @@
         <div class="grid-md-12">
             <div class="notice success">
                 <?php if (get_field('lising_review', 'option')) {
-                    _e('Thank you, we are now reviewing your listing. You will receive a email when your listing is published.', 'wp-lisings');
+                    _e('Thank you, we are now reviewing your listing. You will receive a email when your listing is published.', 'wp-listings');
                 } else {
-                    _e('Thank you, your listing is now published.', 'wp-lisings');
+                    _e('Thank you, your listing is now published.', 'wp-listings');
                 }
                 ?>
             </div>
@@ -16,7 +16,7 @@
 
     <div class="grid">
         <div class="grid-md-12">
-            <form action="" method="post">
+            <form action="" method="post" class="gutter gutter-vertical">
                 <?php wp_nonce_field('wp-listing-add', 'wp-listing-nonce', true, true); ?>
 
                 <div class="grid">
@@ -98,8 +98,8 @@
                             <label><?php _e('Images', 'wp-listings'); ?></label>
                             <span class="text-sm">
                                 <?php _e('Note: The first image will be the main image for the listing.', 'wp-listings'); ?><br>
-                                <?php _e('Max filesize'); ?>: 2mb<br>
-                                <?php _e('Allowed filetypes'); ?>: JPG, PNG
+                                <?php _e('Max filesize', 'wp-listings'); ?>: 2mb<br>
+                                <?php _e('Allowed filetypes', 'wp-listings'); ?>: JPG, PNG
                             </span>
                         </div>
 

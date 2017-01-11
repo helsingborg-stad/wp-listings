@@ -101,7 +101,7 @@
             },
             {
                 "key": "field_586cc0083dd69",
-                "label": "Price",
+                "label": "Pris",
                 "name": "listing_price",
                 "type": "true_false",
                 "instructions": "",
@@ -136,6 +136,40 @@
                 "layout": "vertical",
                 "toggle": 0,
                 "return_format": "value"
+            },
+            {
+                "key": "field_5874a9c3b8bae",
+                "label": "Show button \"add new\"",
+                "name": "listing_add_new_button",
+                "type": "true_false",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "Show \"add new\" button on archive page",
+                "default_value": 1
+            },
+            {
+                "key": "field_5874bbad66456",
+                "label": "Archive page description",
+                "name": "listing_archive_page_description",
+                "type": "wysiwyg",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "tabs": "all",
+                "toolbar": "full",
+                "media_upload": 0
             }
         ],
         "location": [

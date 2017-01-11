@@ -34,6 +34,8 @@ class App
         new \WpListings\SearchForm();
         new \WpListings\ContactForm();
         new \WpListings\Search();
+        new \WpListings\Archive();
+        new \WpListings\Single();
         new \WpListings\Options();
     }
 
