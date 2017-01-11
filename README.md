@@ -17,6 +17,24 @@ You probably want to create a ```archive-listings``` and a ```single-listings```
 - ```archive-listings``` will handle the search and listing of the listings.
 - ```single-listings``` will handle displaying a single listing.
 
+## Public functions
+
+#### wp_listings_add_listing_button($classes = array())
+
+Displays a button to the "add new listing" form depending on your settings in the wp-listings options page.
+
+#### wp_listings_use_price()
+
+*Conditional.* Should price be displayed or not (fetched from options page).
+
+#### wp_listings_show_contact_form()
+
+Displays the contact form.
+
+#### wp_listings_get_meta_fields()
+
+Gets an array with meta fields of the current listing.
+
 ## Shortcodes
 
 #### [wp-listings-form]
