@@ -1,4 +1,3 @@
-
     {
         "key": "group_5864e18caff24",
         "title": "Listing options",
@@ -55,49 +54,6 @@
                 },
                 "message": "Show the contact seller form",
                 "default_value": 0
-            },
-            {
-                "key": "field_5564e2877rs2f",
-                "label": "Add listing button",
-                "name": "listing_add_button",
-                "type": "true_false",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "message": "Display \"add new listing\" button in archive",
-                "default_value": 0
-            },
-            {
-                "key": "field_5875e47705e5e",
-                "label": "Page to link to",
-                "name": "listing_add_button_link",
-                "type": "page_link",
-                "instructions": "",
-                "required": 1,
-                "conditional_logic": [
-                    [
-                        {
-                            "field": "field_5564e2877rs2f",
-                            "operator": "==",
-                            "value": "1"
-                        }
-                    ]
-                ],
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "post_type": [],
-                "taxonomy": [],
-                "allow_null": 0,
-                "allow_archives": 1,
-                "multiple": 0
             },
             {
                 "key": "field_586cc0083dd69",

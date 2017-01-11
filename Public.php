@@ -45,24 +45,3 @@ if (!function_exists('wp_listings_get_meta_fields')) {
         return $fields;
     }
 }
-
-if (!function_exists('wp_listings_add_listing_button')) {
-    function wp_listings_add_listing_button($additionalClasses = array())
-    {
-        if (!get_field('listing_add_button', 'option') || !get_field('listing_add_button_link', 'option')) {
-            return;
-        }
-
-        $url = apply_filters('wp-listings/add_button/link', get_field('listing_add_button_link', 'option'));
-        $text = apply_filters('wp-listings/add_button/text', __('Add listing', 'wp-listings'));
-        $classes = (array) apply_filters('wp-listings/add_button/classes', array('btn', 'btn-primary'));
-
-        if (is_array($additionalClasses)) {
-            $classes = array_merge($classes, $additionalClasses);
-        }
-
-        $markup = '<a href="' . $url . '" class="' . implode(' ', $classes) . '">' . $text . '</a>';
-
-        return apply_filters('wp-listings/add_button/markup', $markup, $text, $url);
-    }
-}
