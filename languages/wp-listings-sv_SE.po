@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WP Listings\n"
-"POT-Creation-Date: 2017-01-10 15:15+0100\n"
-"PO-Revision-Date: 2017-01-10 15:15+0100\n"
+"POT-Creation-Date: 2017-01-11 09:54+0100\n"
+"PO-Revision-Date: 2017-01-11 09:54+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -19,6 +19,10 @@ msgstr ""
 "_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: Public.php:57
+msgid "Add listing"
+msgstr "Ny annons"
 
 #: source/php/App.php:18
 msgid ""
@@ -114,6 +118,10 @@ msgctxt "Post type singular"
 msgid "Listing"
 msgstr "Annons"
 
+#: source/php/Listings.php:53
+msgid "WP Listings could be used for any type of \"buy and sell\" ads."
+msgstr "WP Listings kan användas för alla typer av ”köp och sälj” annonsering."
+
 #: source/php/Listings.php:61
 msgid "listing"
 msgstr "annons"
@@ -169,6 +177,10 @@ msgstr "Inställningar"
 msgid "Back to listing"
 msgstr "Tillbaka till annonslista"
 
+#: templates/add-new-modal.php:8 templates/description.php:27
+msgid "Add new listing"
+msgstr "Lägg till ny annons"
+
 #: templates/contact-form.php:6
 msgid "Your message has been delivered to the seller."
 msgstr "Ditt meddelande har levererats till säljaren."
@@ -200,10 +212,6 @@ msgstr "Meddelande"
 #: templates/contact-form.php:48
 msgid "Send"
 msgstr "Skicka"
-
-#: templates/description.php:25
-msgid "Add new listing"
-msgstr "Lägg till ny annons"
 
 #: templates/frontend-form.php:7
 msgid ""
