@@ -328,7 +328,7 @@ class Listings extends \WpListings\Entity\PostType
      */
     public function published($postId, $post)
     {
-        if ($post->post_type !== \WpListings\App::$postTypeSlug) {
+        if (isset(\WpListings\App::$postTypeSlug) && $post->post_type !== \WpListings\App::$postTypeSlug) {
             return;
         }
 
