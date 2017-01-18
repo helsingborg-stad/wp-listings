@@ -20,6 +20,11 @@ class SearchForm
         $fieldgroups = \WpListings\Listings::getCategoryFieldgroups();
 
         $template = apply_filters('wp-listings/search_template', WPLISTINGS_TEMPLATE_PATH . '/search-form.php');
-        include_once $template;
+
+        ob_start();
+        include $template;
+        $form = ob_get_clean();
+
+        return $form;
     }
 }
