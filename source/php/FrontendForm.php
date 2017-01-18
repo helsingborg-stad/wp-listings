@@ -133,7 +133,11 @@ class FrontendForm
 
         $template = apply_filters('wp-listings/form_template', WPLISTINGS_TEMPLATE_PATH . '/frontend-form.php');
 
-        include_once $template;
+        ob_start();
+        include $template;
+        $form = ob_get_clean();
+
+        return $form;
     }
 
     /**
