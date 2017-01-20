@@ -7,7 +7,7 @@
                 "label": "Days valid",
                 "name": "listing_days_valid",
                 "type": "number",
-                "instructions": "Number of days the listing is published (will be trashed after x days)",
+                "instructions": "Number of days the listing is published (will be trashed after x days). Enter \"0\" to disable this option.",
                 "required": 1,
                 "conditional_logic": 0,
                 "wrapper": {
