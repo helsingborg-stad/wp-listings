@@ -21,6 +21,9 @@ class Listings extends \WpListings\Entity\PostType
         add_action('publish_post', array($this, 'published'), 10, 2);
         add_action('delete_listing', array($this, 'unpublish'));
 
+        //Price field
+        add_filter('acf/load_field/key=field_585ce00694033', array($this, 'requirePrice'));
+
         // Only one taxonomy (place and categories)
         add_filter('wp_terms_checklist_args', array($this, 'termsChecklistArgs'));
 
@@ -36,6 +39,16 @@ class Listings extends \WpListings\Entity\PostType
                 status_header(404);
             }
         });
+    }
+
+    public function requirePrice($field)
+    {
+        if (get_field('listing_price', 'option')) {
+            $field['required'] = 1;
+        } else {
+            $field['required'] = 0;
+        }
+        return $field;
     }
 
     /**
