@@ -23,6 +23,7 @@ class Listings extends \WpListings\Entity\PostType
 
         //Price field
         add_filter('acf/load_field/key=field_585ce00694033', array($this, 'requirePrice'));
+        add_filter('acf/load_value/name=listing_documents', array($this, 'removeHiddenDocuments'), 10, 3);
 
         // Only one taxonomy (place and categories)
         add_filter('wp_terms_checklist_args', array($this, 'termsChecklistArgs'));
@@ -39,16 +40,6 @@ class Listings extends \WpListings\Entity\PostType
                 status_header(404);
             }
         });
-    }
-
-    public function requirePrice($field)
-    {
-        if (get_field('listing_price', 'option')) {
-            $field['required'] = 1;
-        } else {
-            $field['required'] = 0;
-        }
-        return $field;
     }
 
     /**
@@ -408,5 +399,37 @@ class Listings extends \WpListings\Entity\PostType
         }
 
         return $args;
+    }
+
+    /**
+     * Check if price should be a required field
+     * @return array
+     */
+    public function requirePrice($field) : array
+    {
+        if (get_field('listing_price', 'option')) {
+            $field['required'] = 1;
+        } else {
+            $field['required'] = 0;
+        }
+        return $field;
+    }
+
+     /**
+     * Check if price should be a required field
+     * @return array
+     */
+
+    public function removeHiddenDocuments($value, $post_id, $field)
+    {
+        if (!is_admin() && is_array($value)) {
+            foreach ($value as $key => $item) {
+                if ($item['field_5881dfb87d60c'] == 0) {
+                    unset($value[$key]);
+                }
+            }
+        }
+
+        return $value;
     }
 }

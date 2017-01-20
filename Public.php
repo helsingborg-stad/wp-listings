@@ -14,6 +14,13 @@ if (!function_exists('wp_listings_show_contact_form')) {
     }
 }
 
+if (!function_exists('wp_listings_get_documents')) {
+    function wp_listings_get_documents()
+    {
+        return get_field('listing_documents');
+    }
+}
+
 if (!function_exists('wp_listings_get_meta_fields')) {
     function wp_listings_get_meta_fields()
     {

@@ -5,6 +5,7 @@ namespace WpListings;
 class Single
 {
     private $buttonPrinted = false;
+    private $documentPrinted = false;
 
     public function __construct()
     {
