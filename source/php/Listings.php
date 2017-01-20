@@ -348,10 +348,14 @@ class Listings extends \WpListings\Entity\PostType
 
         // Schedule deletion after X days
         $daysToDelete = (int) get_field('listing_days_valid', 'option');
-        $timestamp = time() + ($daysToDelete * (3600 * 24));
-        wp_schedule_single_event($timestamp, 'delete_listing', array(
-            $postId
-        ));
+        if (!empty($daysToDelete) && is_numeric($daysToDelete)) {
+            $timestamp = time() + ($daysToDelete * (3600 * 24));
+            wp_schedule_single_event($timestamp, 'delete_listing', array(
+                $postId
+            ));
+        } else {
+            wp_clear_scheduled_hook('delete_listing');
+        }
     }
 
     /**
