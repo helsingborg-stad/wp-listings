@@ -1,0 +1,98 @@
+    {
+        "key": "group_5881df957adea",
+        "title": "Documents",
+        "fields": [
+            {
+                "key": "field_5881df9c7d60b",
+                "label": "Listing documents",
+                "name": "listing_documents",
+                "type": "repeater",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "collapsed": "",
+                "min": "",
+                "max": "",
+                "layout": "table",
+                "button_label": "L\u00e4gg till rad",
+                "sub_fields": [
+                    {
+                        "key": "field_5881dfb87d60c",
+                        "label": "Public",
+                        "name": "document_is_public",
+                        "type": "true_false",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "33,333",
+                            "class": "file-public",
+                            "id": ""
+                        },
+                        "message": "Show this document?",
+                        "default_value": 1
+                    },
+                    {
+                        "key": "field_5881e0d6ea175",
+                        "label": "Title",
+                        "name": "document_title",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 1,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "33,333",
+                            "class": "file-title",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5881e105ea176",
+                        "label": "File",
+                        "name": "document_file",
+                        "type": "file",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "33,333",
+                            "class": "file-container",
+                            "id": ""
+                        },
+                        "return_format": "id",
+                        "library": "all",
+                        "min_size": "",
+                        "max_size": 20,
+                        "mime_types": "pdf, doc, docx, dot, xls, xlt, xlsx, ppt, pptx"
+                    }
+                ]
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "listing"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": 1,
+        "description": ""
+    }

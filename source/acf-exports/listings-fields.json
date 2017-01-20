@@ -4,7 +4,7 @@
         "fields": [
             {
                 "key": "field_585ce00694033",
-                "label": "Price",
+                "label": "Pris",
                 "name": "listing_price",
                 "type": "number",
                 "instructions": "",
@@ -25,7 +25,7 @@
             },
             {
                 "key": "field_585ce12d0ee91",
-                "label": "Seller name",
+                "label": "Contact name",
                 "name": "listing_seller_name",
                 "type": "text",
                 "instructions": "",
@@ -44,7 +44,7 @@
             },
             {
                 "key": "field_585ce14e0ee92",
-                "label": "Seller email",
+                "label": "Contact email",
                 "name": "listing_seller_email",
                 "type": "email",
                 "instructions": "",
@@ -62,7 +62,7 @@
             },
             {
                 "key": "field_585ce1720ee93",
-                "label": "Seller phone number",
+                "label": "Contact phone number",
                 "name": "listing_seller_phone_number",
                 "type": "text",
                 "instructions": "",

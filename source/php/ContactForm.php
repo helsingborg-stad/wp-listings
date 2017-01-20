@@ -76,6 +76,10 @@ class ContactForm
 
         $template = apply_filters('wp-listings/contact_template', WPLISTINGS_TEMPLATE_PATH . '/contact-form.php');
 
+        ob_start();
         include $template;
+        $form = ob_get_clean();
+
+        return $form;
     }
 }

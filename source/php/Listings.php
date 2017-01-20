@@ -21,6 +21,10 @@ class Listings extends \WpListings\Entity\PostType
         add_action('publish_post', array($this, 'published'), 10, 2);
         add_action('delete_listing', array($this, 'unpublish'));
 
+        //Price field
+        add_filter('acf/load_field/key=field_585ce00694033', array($this, 'requirePrice'));
+        add_filter('acf/load_value/name=listing_documents', array($this, 'removeHiddenDocuments'), 10, 3);
+
         // Only one taxonomy (place and categories)
         add_filter('wp_terms_checklist_args', array($this, 'termsChecklistArgs'));
 
@@ -328,7 +332,7 @@ class Listings extends \WpListings\Entity\PostType
      */
     public function published($postId, $post)
     {
-        if ($post->post_type !== \WpListings\App::$postTypeSlug) {
+        if (isset(\WpListings\App::$postTypeSlug) && $post->post_type !== \WpListings\App::$postTypeSlug) {
             return;
         }
 
@@ -348,10 +352,14 @@ class Listings extends \WpListings\Entity\PostType
 
         // Schedule deletion after X days
         $daysToDelete = (int) get_field('listing_days_valid', 'option');
-        $timestamp = time() + ($daysToDelete * (3600 * 24));
-        wp_schedule_single_event($timestamp, 'delete_listing', array(
-            $postId
-        ));
+        if (!empty($daysToDelete) && is_numeric($daysToDelete)) {
+            $timestamp = time() + ($daysToDelete * (3600 * 24));
+            wp_schedule_single_event($timestamp, 'delete_listing', array(
+                $postId
+            ));
+        } else {
+            wp_clear_scheduled_hook('delete_listing');
+        }
     }
 
     /**
@@ -394,36 +402,34 @@ class Listings extends \WpListings\Entity\PostType
     }
 
     /**
-     * Save single terms
-     * @param  int     $postId The post id
-     * @param  WP_Post $post   Wp post object
-     * @return voi
+     * Check if price should be a required field
+     * @return array
      */
-    /*
-    public function saveOnlyOneTerm($postId, $post)
+    public function requirePrice($field) : array
     {
-        if ($post->post_type !== self::$postTypeSlug) {
-            return;
+        if (get_field('listing_price', 'option')) {
+            $field['required'] = 1;
+        } else {
+            $field['required'] = 0;
         }
-
-        // Get the term(s)
-        $taxes = $_POST['tax_input'];
-
-        // Filter out zero values
-        foreach ($taxes as $tax => &$terms) {
-            $terms = array_filter($terms, function ($item) {
-                return $item != 0;
-            });
-
-            $terms = array_values($terms);
-        }
-
-        // Set the terms for the post
-        foreach ($taxes as $tax => $terms) {
-            $terms = array_map('intval', $terms);
-            wp_delete_object_term_relationships($postId, $tax);
-            wp_set_object_terms($postId, $terms, $tax, true);
-        }
+        return $field;
     }
-    */
+
+     /**
+     * Check if price should be a required field
+     * @return array
+     */
+
+    public function removeHiddenDocuments($value, $post_id, $field)
+    {
+        if (!is_admin() && is_array($value)) {
+            foreach ($value as $key => $item) {
+                if ($item['field_5881dfb87d60c'] == 0) {
+                    unset($value[$key]);
+                }
+            }
+        }
+
+        return $value;
+    }
 }
