@@ -409,38 +409,4 @@ class Listings extends \WpListings\Entity\PostType
 
         return $args;
     }
-
-    /**
-     * Save single terms
-     * @param  int     $postId The post id
-     * @param  WP_Post $post   Wp post object
-     * @return voi
-     */
-    /*
-    public function saveOnlyOneTerm($postId, $post)
-    {
-        if ($post->post_type !== self::$postTypeSlug) {
-            return;
-        }
-
-        // Get the term(s)
-        $taxes = $_POST['tax_input'];
-
-        // Filter out zero values
-        foreach ($taxes as $tax => &$terms) {
-            $terms = array_filter($terms, function ($item) {
-                return $item != 0;
-            });
-
-            $terms = array_values($terms);
-        }
-
-        // Set the terms for the post
-        foreach ($taxes as $tax => $terms) {
-            $terms = array_map('intval', $terms);
-            wp_delete_object_term_relationships($postId, $tax);
-            wp_set_object_terms($postId, $terms, $tax, true);
-        }
-    }
-    */
 }
