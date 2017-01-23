@@ -25,6 +25,10 @@ class Listings extends \WpListings\Entity\PostType
         add_filter('acf/load_field/key=field_585ce00694033', array($this, 'requirePrice'));
         add_filter('acf/load_value/name=listing_documents', array($this, 'removeHiddenDocuments'), 10, 3);
 
+        //Default contact
+        add_filter('acf/load_value/name=listing_seller_name', array($this, 'defaultSellerName'), 10, 3);
+        add_filter('acf/load_value/name=listing_seller_email', array($this, 'defaultSellerEmail'), 10, 3);
+
         // Only one taxonomy (place and categories)
         add_filter('wp_terms_checklist_args', array($this, 'termsChecklistArgs'));
 
@@ -417,7 +421,7 @@ class Listings extends \WpListings\Entity\PostType
 
      /**
      * Check if price should be a required field
-     * @return array
+     * @return string
      */
 
     public function removeHiddenDocuments($value, $post_id, $field)
@@ -428,6 +432,34 @@ class Listings extends \WpListings\Entity\PostType
                     unset($value[$key]);
                 }
             }
+        }
+
+        return $value;
+    }
+
+    /**
+     * Fill form with default contact name
+     * @return array
+     */
+
+    public function defaultSellerName($value, $post_id, $field)
+    {
+        if (empty($value) && get_field('listings_default_contact', 'option')) {
+            return get_field('listings_default_contact_name','option');
+        }
+
+        return $value;
+    }
+
+    /**
+     * Fill form with default contact email
+     * @return array
+     */
+
+    public function defaultSellerEmail($value, $post_id, $field)
+    {
+        if (empty($value) && get_field('listings_default_contact', 'option')) {
+            return get_field('listings_default_contact_email','option');
         }
 
         return $value;

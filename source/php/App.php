@@ -27,7 +27,7 @@ class App
         });
 
         self::$uploadDir = $this->getUploadDir();
-        //add_filter('acf/settings/load_json', array($this, 'jsonLoadPath'));
+        add_filter('acf/settings/load_json', array($this, 'jsonLoadPath'));
 
         new \WpListings\Listings();
         new \WpListings\FrontendForm();

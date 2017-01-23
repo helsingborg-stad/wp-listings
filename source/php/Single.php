@@ -14,7 +14,7 @@ class Single
 
     public function addGoBackButton($title, $post_id = null) : string
     {
-        if ($this->isSingleListing($post_id) && !$this->buttonPrinted) {
+        if ($this->isSingleListing($post_id) && !$this->buttonPrinted && get_field('listing_show_back_button', 'option')) {
 
             //Do not show again
             $this->buttonPrinted = true;
@@ -24,7 +24,6 @@ class Single
 
             //Return button markup
             return $title . "" . '<a href="' . get_post_type_archive_link(\WpListings\Listings::$postTypeSlug) . '" class="btn btn-sm pull-right" style="font-size: 15px">' . $label . '</a>';
-
         }
         return $title;
     }
