@@ -29,6 +29,10 @@ class Listings extends \WpListings\Entity\PostType
         add_filter('acf/load_value/name=listing_seller_name', array($this, 'defaultSellerName'), 10, 3);
         add_filter('acf/load_value/name=listing_seller_email', array($this, 'defaultSellerEmail'), 10, 3);
 
+        //Hide terms
+        add_filter('get_the_terms', array($this, 'hideCategoryTerm'), 10, 3);
+        add_filter('get_the_terms', array($this, 'hideLocationTerm'), 10, 3);
+
         // Only one taxonomy (place and categories)
         add_filter('wp_terms_checklist_args', array($this, 'termsChecklistArgs'));
 
@@ -445,7 +449,7 @@ class Listings extends \WpListings\Entity\PostType
     public function defaultSellerName($value, $post_id, $field)
     {
         if (empty($value) && get_field('listings_default_contact', 'option')) {
-            return get_field('listings_default_contact_name','option');
+            return get_field('listings_default_contact_name', 'option');
         }
 
         return $value;
@@ -459,9 +463,25 @@ class Listings extends \WpListings\Entity\PostType
     public function defaultSellerEmail($value, $post_id, $field)
     {
         if (empty($value) && get_field('listings_default_contact', 'option')) {
-            return get_field('listings_default_contact_email','option');
+            return get_field('listings_default_contact_email', 'option');
         }
 
         return $value;
+    }
+
+    public function hideCategoryTerm($terms, $post_id, $taxonomy)
+    {
+        if ($taxonomy == \WpListings\Listings::$placesTaxonomySlug && !is_admin() && !get_field('listings_show_categories', 'option')) {
+            return array();
+        }
+        return $terms;
+    }
+
+    public function hideLocationTerm($terms, $post_id, $taxonomy)
+    {
+        if ($taxonomy == \WpListings\Listings::$taxonomySlug && !is_admin() && !get_field('listings_show_location', 'option')) {
+            return array();
+        }
+        return $terms;
     }
 }
