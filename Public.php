@@ -52,3 +52,13 @@ if (!function_exists('wp_listings_get_meta_fields')) {
         return $fields;
     }
 }
+
+if (!function_exists('wp_listings_delete_listing_button')) {
+    function wp_listings_delete_listing_button()
+    {
+        $markup = '<a href="#removeListing">' . __('Remove listing', 'wp-listings') . '</a>';
+        $markup = apply_filters('wp-listings/delete_listing_button', $markup);
+        include WPLISTINGS_TEMPLATE_PATH . 'remove-modal.php';
+        return $markup;
+    }
+}

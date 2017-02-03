@@ -15,6 +15,8 @@ class Listings extends \WpListings\Entity\PostType
 
         self::$placesTaxonomySlug = $this->placesTaxonomy();
 
+        add_action('init', array($this, 'removeListingWithPassword'));
+
         add_action('created_term', array($this, 'createTermsFieldJson'), 10, 3);
         add_action('edited_term', array($this, 'createTermsFieldJson'), 10, 3);
 
@@ -92,7 +94,7 @@ class Listings extends \WpListings\Entity\PostType
                         echo ', ';
                     }
 
-                    echo $category->name;
+                    echo isset($category->name) ? $category->name : '';
                     $i++;
                 }
             }
@@ -110,7 +112,7 @@ class Listings extends \WpListings\Entity\PostType
                         echo ', ';
                     }
 
-                    echo $place->name;
+                    echo isset($place->name) ? $place->name : '';
                     $i++;
                 }
             }
@@ -503,5 +505,29 @@ class Listings extends \WpListings\Entity\PostType
             return array();
         }
         return $terms;
+    }
+
+    public function removeListingWithPassword()
+    {
+        if (!isset($_POST['remove-password'])) {
+            return;
+        }
+
+        if (!wp_verify_nonce($_POST['_wpnonce'], 'remove_listing')) {
+            return;
+        }
+
+        $postId = $_POST['post_id'];
+        $listingPassword = get_post_meta($postId, '_listing_password', true);
+
+        if ($listingPassword !== sha1($_POST['remove-password'])) {
+            wp_redirect($_SERVER['HTTP_REFERER'] . '?fail=true');
+            exit;
+        }
+
+        wp_trash_post($postId);
+
+        wp_redirect(get_post_type_archive_link('listing'));
+        exit;
     }
 }
