@@ -18,7 +18,7 @@ class Listings extends \WpListings\Entity\PostType
         add_action('created_term', array($this, 'createTermsFieldJson'), 10, 3);
         add_action('edited_term', array($this, 'createTermsFieldJson'), 10, 3);
 
-        add_action('publish_post', array($this, 'published'), 10, 2);
+        add_action('publish_listing', array($this, 'published'), 10, 2);
         add_action('delete_listing', array($this, 'unpublish'));
 
         //Price field
@@ -348,7 +348,7 @@ class Listings extends \WpListings\Entity\PostType
         update_post_meta($postId, '_listing_password', sha1($listingPassword));
 
         // Send notification mail to seller
-        $sellerName = get_post_meta($postid, 'listing_seller_name', true);
+        $sellerName = get_post_meta($postId, 'listing_seller_name', true);
         $sellerEmail = get_post_meta($postId, 'listing_seller_email', true);
 
         $mailTemplate = get_field('listing_published_message', 'option');
