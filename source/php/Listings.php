@@ -344,13 +344,16 @@ class Listings extends \WpListings\Entity\PostType
             return;
         }
 
+        $listingPassword = wp_generate_password(8, false, false);
+        update_post_meta($postId, '_listing_password', sha1($listingPassword));
+
         // Send notification mail to seller
         $sellerName = get_post_meta($postid, 'listing_seller_name', true);
         $sellerEmail = get_post_meta($postId, 'listing_seller_email', true);
 
         $mailTemplate = get_field('listing_published_message', 'option');
         if (is_null($mailTemplate)) {
-            $mailTemplate = __('Congratulations %1$s! Your listing is now approved and published. You can see your listing here: %2$s', 'wp-listings');
+            $mailTemplate = __('Congratulations %1$s! Your listing is now approved and published.<br>Your password to remove the ad is: <strong>%3$s</strong><br>You can see your listing here: %2$s', 'wp-listings');
         }
 
         $headers = array('Content-type: text/html; charset=UTF-8');
@@ -361,7 +364,8 @@ class Listings extends \WpListings\Entity\PostType
             sprintf(
                 $mailTemplate,
                 $sellerName,
-                get_permalink($postId)
+                get_permalink($postId),
+                $listingPassword
             ),
             $headers
         );
