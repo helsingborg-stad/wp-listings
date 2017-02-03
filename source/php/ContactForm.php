@@ -29,10 +29,16 @@ class ContactForm
 
         $seller = get_post_meta($listing->ID, 'listing_seller_email', true);
         $subject = apply_filters('wp-listings/contact/email/subject', __('Re: ' . $listing->post_title), $listing);
+
+        $mailTemplate = get_field('new_contact_form_message', 'option');
+        if (is_null($mailTemplate)) {
+            $mailTemplate = '<strong>' . __('You have got a new message about your ad "%1$s" from %2$s, <%3$s>') . '</strong><br><br>%4$s';
+        }
+
         $message = apply_filters(
             'wp-listings/contact/email/message',
             sprintf(
-                '<strong>' . __('You have got a new message about your ad "%1$s" from %2$s, <%3$s>') . '</strong><br><br>%4$s',
+                $mailTemplate,
                 '<a href="' . get_permalink($listing->ID) . '">' . $listing->post_title . '</a>',
                 $fromName,
                 $fromEmail,

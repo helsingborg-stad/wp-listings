@@ -1,8 +1,11 @@
+
     {
         "key": "group_5864e18caff24",
         "title": "Listing options",
         "fields": [
             {
+                "placement": "top",
+                "endpoint": 0,
                 "key": "field_588613af867ff",
                 "label": "General",
                 "name": "",
@@ -14,11 +17,14 @@
                     "width": "",
                     "class": "",
                     "id": ""
-                },
-                "placement": "top",
-                "endpoint": 0
+                }
             },
             {
+                "tabs": "all",
+                "toolbar": "full",
+                "media_upload": 0,
+                "default_value": "",
+                "delay": 0,
                 "key": "field_5874bbad66456",
                 "label": "Archive page description",
                 "name": "listing_archive_page_description",
@@ -30,13 +36,16 @@
                     "width": "",
                     "class": "",
                     "id": ""
-                },
-                "default_value": "",
-                "tabs": "all",
-                "toolbar": "full",
-                "media_upload": 0
+                }
             },
             {
+                "default_value": 30,
+                "min": "",
+                "max": "",
+                "step": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
                 "key": "field_5864e1b07cd2d",
                 "label": "Days valid",
                 "name": "listing_days_valid",
@@ -48,16 +57,14 @@
                     "width": "",
                     "class": "",
                     "id": ""
-                },
-                "default_value": 30,
-                "placeholder": "",
-                "prepend": "",
-                "append": "",
-                "min": "",
-                "max": "",
-                "step": ""
+                }
             },
             {
+                "default_value": 0,
+                "message": "Listings must be reviewed before publication",
+                "ui": 0,
+                "ui_on_text": "",
+                "ui_off_text": "",
                 "key": "field_5864e2877cd2f",
                 "label": "Review",
                 "name": "lising_review",
@@ -69,13 +76,16 @@
                     "width": "50",
                     "class": "",
                     "id": ""
-                },
-                "message": "Listings must be reviewed before publication",
-                "default_value": 0
+                }
             },
             {
+                "default_value": 1,
+                "message": "Yes, the price field is mandatory",
+                "ui": 0,
+                "ui_on_text": "",
+                "ui_off_text": "",
                 "key": "field_586cc0083dd69",
-                "label": "Price",
+                "label": "Pris",
                 "name": "listing_price",
                 "type": "true_false",
                 "instructions": "",
@@ -85,11 +95,19 @@
                     "width": "50",
                     "class": "",
                     "id": ""
-                },
-                "message": "Yes, the price field is mandatory",
-                "default_value": 1
+                }
             },
             {
+                "layout": "horizontal",
+                "choices": {
+                    "submission_logged_in": "Only logged in users can submit new listings",
+                    "view_logged_in": "Only logged in users can view listings"
+                },
+                "default_value": [],
+                "allow_custom": 0,
+                "save_custom": 0,
+                "toggle": 0,
+                "return_format": "value",
                 "key": "field_5864e22a7cd2e",
                 "label": "Access restrictions",
                 "name": "listing_access_restrictions",
@@ -101,19 +119,13 @@
                     "width": "",
                     "class": "",
                     "id": ""
-                },
-                "choices": {
-                    "submission_logged_in": "Only logged in users can submit new listings",
-                    "view_logged_in": "Only logged in users can view listings"
-                },
-                "default_value": [],
-                "layout": "horizontal",
-                "toggle": 0,
-                "return_format": "value"
+                }
             },
             {
+                "placement": "top",
+                "endpoint": 0,
                 "key": "field_588613fa86800",
-                "label": "Contact",
+                "label": "Kontakt",
                 "name": "",
                 "type": "tab",
                 "instructions": "",
@@ -123,11 +135,14 @@
                     "width": "",
                     "class": "",
                     "id": ""
-                },
-                "placement": "top",
-                "endpoint": 0
+                }
             },
             {
+                "default_value": 0,
+                "message": "Yes, show the contact seller form",
+                "ui": 0,
+                "ui_on_text": "",
+                "ui_off_text": "",
                 "key": "field_586cbfd43dd68",
                 "label": "Show contact form",
                 "name": "listing_contact_seller_form",
@@ -139,11 +154,14 @@
                     "width": "50",
                     "class": "",
                     "id": ""
-                },
-                "message": "Yes, show the contact seller form",
-                "default_value": 0
+                }
             },
             {
+                "default_value": 0,
+                "message": "Yes, add a default contact",
+                "ui": 0,
+                "ui_on_text": "",
+                "ui_off_text": "",
                 "key": "field_58860f563530d",
                 "label": "Enable a default contact",
                 "name": "listings_default_contact",
@@ -155,11 +173,14 @@
                     "width": "",
                     "class": "",
                     "id": ""
-                },
-                "message": "Yes, add a default contact",
-                "default_value": 0
+                }
             },
             {
+                "default_value": "",
+                "maxlength": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
                 "key": "field_58860fcbd661f",
                 "label": "Default contact name",
                 "name": "listings_default_contact_name",
@@ -179,14 +200,13 @@
                     "width": "50",
                     "class": "",
                     "id": ""
-                },
+                }
+            },
+            {
                 "default_value": "",
                 "placeholder": "",
                 "prepend": "",
                 "append": "",
-                "maxlength": ""
-            },
-            {
                 "key": "field_58861001d6620",
                 "label": "Default contact email",
                 "name": "listings_default_contact_email",
@@ -206,13 +226,11 @@
                     "width": "50",
                     "class": "",
                     "id": ""
-                },
-                "default_value": "",
-                "placeholder": "",
-                "prepend": "",
-                "append": ""
+                }
             },
             {
+                "placement": "top",
+                "endpoint": 0,
                 "key": "field_58861385867fe",
                 "label": "Visibility \/ UI",
                 "name": "",
@@ -224,11 +242,14 @@
                     "width": "",
                     "class": "",
                     "id": ""
-                },
-                "placement": "top",
-                "endpoint": 0
+                }
             },
             {
+                "default_value": 1,
+                "message": "Yes, show \"back to listings\" button",
+                "ui": 0,
+                "ui_on_text": "",
+                "ui_off_text": "",
                 "key": "field_5886066950c8a",
                 "label": "Show back to listing button",
                 "name": "listing_show_back_button",
@@ -240,11 +261,14 @@
                     "width": "50",
                     "class": "",
                     "id": ""
-                },
-                "message": "Yes, show \"back to listings\" button",
-                "default_value": 1
+                }
             },
             {
+                "default_value": "",
+                "maxlength": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
                 "key": "field_5886041c9040d",
                 "label": "Single listing \"back\" button label",
                 "name": "listing_back_button_label",
@@ -264,14 +288,14 @@
                     "width": "50",
                     "class": "",
                     "id": ""
-                },
-                "default_value": "",
-                "placeholder": "",
-                "prepend": "",
-                "append": "",
-                "maxlength": ""
+                }
             },
             {
+                "default_value": 1,
+                "message": "Show \"add new\" button on archive page",
+                "ui": 0,
+                "ui_on_text": "",
+                "ui_off_text": "",
                 "key": "field_5874a9c3b8bae",
                 "label": "Show add new button",
                 "name": "listing_add_new_button",
@@ -283,11 +307,14 @@
                     "width": "",
                     "class": "",
                     "id": ""
-                },
-                "message": "Show \"add new\" button on archive page",
-                "default_value": 1
+                }
             },
             {
+                "default_value": 1,
+                "message": "Yes, show categories (frontend)",
+                "ui": 0,
+                "ui_on_text": "",
+                "ui_off_text": "",
                 "key": "field_5886130e481b4",
                 "label": "Show categories",
                 "name": "listings_show_categories",
@@ -299,11 +326,14 @@
                     "width": "",
                     "class": "",
                     "id": ""
-                },
-                "message": "Yes, show categories (frontend)",
-                "default_value": 1
+                }
             },
             {
+                "default_value": 1,
+                "message": "Yes, show location (frontend)",
+                "ui": 0,
+                "ui_on_text": "",
+                "ui_off_text": "",
                 "key": "field_58861340481b5",
                 "label": "Show location",
                 "name": "listings_show_location",
@@ -315,9 +345,80 @@
                     "width": "",
                     "class": "",
                     "id": ""
-                },
-                "message": "Yes, show location (frontend)",
-                "default_value": 1
+                }
+            },
+            {
+                "placement": "top",
+                "endpoint": 0,
+                "key": "field_58944399b98e8",
+                "label": "Email templates",
+                "name": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                }
+            },
+            {
+                "tabs": "all",
+                "toolbar": "basic",
+                "media_upload": 1,
+                "default_value": "Congratulations %1$s! Your listing is now approved and published. You can see your listing here: %2$s",
+                "delay": 0,
+                "key": "field_58944669afeac",
+                "label": "Listing published",
+                "name": "listing_published_message",
+                "type": "wysiwyg",
+                "instructions": "Email notification when listing gets published.<br><br>\r\n%1$s = Seller name<br>\r\n%2$s = Listing permalink",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                }
+            },
+            {
+                "tabs": "all",
+                "toolbar": "basic",
+                "media_upload": 0,
+                "default_value": "Hi %s! Your listing \"%s\" is now %d days old and therefor it has beed unpublished.",
+                "delay": 0,
+                "key": "field_5894474aab6de",
+                "label": "Listing unpublished",
+                "name": "listing_unpublished_message",
+                "type": "wysiwyg",
+                "instructions": "Email notification when a seller\/contact person receives a new message from a contact form. | \r\n<br><br>\r\n%1$s = Seller name<br>\r\n%2$s = Days to unpublish",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                }
+            },
+            {
+                "tabs": "all",
+                "toolbar": "basic",
+                "media_upload": 0,
+                "default_value": "<strong>You have got a new message about your ad \"%1$s\" from %2$s, %3$s<\/strong>\r\n\r\n%4$s",
+                "delay": 0,
+                "key": "field_589443b6b98e9",
+                "label": "New contact form message",
+                "name": "new_contact_form_message",
+                "type": "wysiwyg",
+                "instructions": "Email notification when a seller\/contact person receives a new message from a contact form. | \r\n<br><br>\r\n%1$s = Anchor link to listing<br>\r\n%2$s = From name<br>\r\n%3$s = From email<br>\r\n%4$s = Message",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                }
             }
         ],
         "location": [

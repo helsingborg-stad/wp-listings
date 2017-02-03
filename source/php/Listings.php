@@ -348,14 +348,22 @@ class Listings extends \WpListings\Entity\PostType
         $sellerName = get_post_meta($postid, 'listing_seller_name', true);
         $sellerEmail = get_post_meta($postId, 'listing_seller_email', true);
 
+        $mailTemplate = get_field('listing_published_message', 'option');
+        if (is_null($mailTemplate)) {
+            $mailTemplate = __('Congratulations %1$s! Your listing is now approved and published. You can see your listing here: %2$s', 'wp-listings');
+        }
+
+        $headers = array('Content-type: text/html; charset=UTF-8');
+
         wp_mail(
             $sellerEmail,
             __('Listing published', 'wp-listings'),
             sprintf(
-                __('Congratulations %s! Your listing is now approved and published. You can see your listing here: %s', 'wp-listings'),
+                $mailTemplate,
                 $sellerName,
                 get_permalink($postId)
-            )
+            ),
+            $headers
         );
 
         // Schedule deletion after X days
@@ -385,14 +393,22 @@ class Listings extends \WpListings\Entity\PostType
         $sellerName = get_post_meta($postid, 'listing_seller_name', true);
         $sellerEmail = get_post_meta($postId, 'listing_seller_email', true);
 
+        $mailTemplate = get_field('listing_unpublished_message', 'option');
+        if (is_null($mailTemplate)) {
+            $mailTemplate = __('Hi %s! Your listing "%s" is now %d days old and therefor it has beed unpublished.', 'wp-listings');
+        }
+
+        $headers = array('Content-type: text/html; charset=UTF-8');
+
         wp_mail(
             $sellerEmail,
             __('Listing unpublished', 'wp-listings'),
             sprintf(
-                __('Hi %s! Your listing "%s" is now %d days old and therefor it has beed unpublished.', 'wp-listings'),
+                $mailTemplate,
                 $sellerName,
                 $daysToDelete
-            )
+            ),
+            $headers
         );
 
         // Trash the post
