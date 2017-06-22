@@ -120,24 +120,33 @@ class FrontendForm
      */
     public function showForm()
     {
+        //Buffer output
+        ob_start();
+
+        //Messages
         if (in_array('submission_logged_in', (array)get_field('listing_access_restrictions', 'option')) && !is_user_logged_in()) {
-            $msg = '<div class="grid"><div class="grid-md-12">' . __('You need to login to use the listing submission form.', 'wp-lisings') . '</div></div>';
-            $msg = apply_filters('wp-listings/form/login_required', $msg);
+            $msg = apply_filters('wp-listings/form/login_required',
+                '<div class="grid">
+                    <div class="grid-md-12">
+                    ' . __('You need to login to use the listing submission form.', 'wp-lisings') . '
+                    </div>
+                </div>'
+            );
 
             echo $msg;
             return;
         }
 
+        //Enqueue JS
         \WpListings\App::enqueueJs();
+
+        //Data
         $fieldgroups = \WpListings\Listings::getCategoryFieldgroups();
 
-        $template = apply_filters('wp-listings/form_template', WPLISTINGS_TEMPLATE_PATH . '/frontend-form.php');
+        //Run view
+        include apply_filters('wp-listings/form_template', WPLISTINGS_TEMPLATE_PATH . '/frontend-form.php');
 
-        ob_start();
-        include $template;
-        $form = ob_get_clean();
-
-        return $form;
+        return ob_get_clean();
     }
 
     /**

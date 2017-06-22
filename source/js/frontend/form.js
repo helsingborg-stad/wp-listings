@@ -5,9 +5,15 @@ WpListings.Frontend.Form = (function ($) {
     var _currentCategory;
 
     function Form() {
-        _currentCategory = $('.wp-listings-form select[name="category"]').val();
-        this.showFieldgroup(_currentCategory);
 
+        //Init form
+        $('.wp-listings-form select[name="category"]').each(function(index, object){
+            if($(object).val() != "") {
+                this.showFieldgroup($(object).val());
+            }
+        }.bind(this));
+
+        //Submit & Search
         $('.wp-listings-form select[name="category"]').on('change', function (e) {
             var fieldgroupId = $(e.target).closest('select').val();
             this.showFieldgroup(fieldgroupId);
