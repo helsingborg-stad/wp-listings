@@ -17,14 +17,14 @@
                     <input type="hidden" name="post_id" value="<?php the_id(); ?>">
 
                     <p>
-                        <?php _e('To remove the listing you need to have the listing removal password at hand. Fill in the password below and click the remove button.'); ?>
+                        <?php _e('To remove the listing you need to have the listing removal password at hand. Fill in the password below and click the remove button.', 'wp-listings'); ?>
                     </p>
                     <p style="margin: 15px 0;">
-                        <?php _e('Note: This will permanently remove the listing.'); ?>
+                        <?php _e('Note: This will permanently remove the listing.', 'wp-listings'); ?>
                     </p>
 
                     <div class="form-group">
-                        <label for="remove-password">Password</label>
+                        <label for="remove-password"><?php _e('Password', 'wp-listings'); ?></label>
                         <input type="password" id="remove-password" name="remove-password">
                     </div>
                 </div>

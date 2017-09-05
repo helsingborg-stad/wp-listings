@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WP Listings\n"
-"POT-Creation-Date: 2017-01-11 09:54+0100\n"
-"PO-Revision-Date: 2017-01-11 09:54+0100\n"
+"POT-Creation-Date: 2017-09-05 15:07+0200\n"
+"PO-Revision-Date: 2017-09-05 15:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.0.3\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: wp-listings.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -20,9 +20,9 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: Public.php:57
-msgid "Add listing"
-msgstr "Ny annons"
+#: Public.php:59 templates/remove-modal.php:6 templates/remove-modal.php:33
+msgid "Remove listing"
+msgstr "Ta bort annons"
 
 #: source/php/App.php:18
 msgid ""
@@ -43,7 +43,7 @@ msgstr ""
 "Du har fått ett nytt meddelande angående din annons \"%1$s\" från %2$s, <"
 "%3$s>"
 
-#: source/php/ContactForm.php:66 source/php/FrontendForm.php:124
+#: source/php/ContactForm.php:72 source/php/FrontendForm.php:124
 msgid "You need to login to use the listing submission form."
 msgstr "Du måste logga in för att kunna lägga in en annons."
 
@@ -108,60 +108,55 @@ msgstr "Skapa ny %s"
 msgid "New %s Name"
 msgstr "Nytt %s namn"
 
-#: source/php/Listings.php:49
+#: source/php/Listings.php:63
 msgctxt "Post type plural"
 msgid "Listings"
 msgstr "Annonser"
 
-#: source/php/Listings.php:50
+#: source/php/Listings.php:64
 msgctxt "Post type singular"
 msgid "Listing"
 msgstr "Annons"
 
-#: source/php/Listings.php:53
+#: source/php/Listings.php:67
 msgid "WP Listings could be used for any type of \"buy and sell\" ads."
 msgstr "WP Listings kan användas för alla typer av ”köp och sälj” annonsering."
 
-#: source/php/Listings.php:61
+#: source/php/Listings.php:75
 msgid "listing"
 msgstr "annons"
 
-#: source/php/Listings.php:73 source/php/Listings.php:117
+#: source/php/Listings.php:87 source/php/Listings.php:131
 #: templates/frontend-form.php:52
 msgid "Category"
 msgstr "Kategori"
 
-#: source/php/Listings.php:91 source/php/Listings.php:132
+#: source/php/Listings.php:105 source/php/Listings.php:146
 #: templates/frontend-form.php:34
 msgid "Place"
 msgstr "Plats"
 
-#: source/php/Listings.php:118
+#: source/php/Listings.php:132
 msgid "Categories"
 msgstr "Kategorier"
 
-#: source/php/Listings.php:133
+#: source/php/Listings.php:147
 msgid "Places"
 msgstr "Platser"
 
-#: source/php/Listings.php:341
+#: source/php/Listings.php:358
+#, php-format
+msgid ""
+"Congratulations %1$s! Your listing is now approved and published.<br>Your "
+"password to remove the ad is: <strong>%3$s</strong><br>You can see your "
+"listing here: %2$s"
+msgstr ""
+
+#: source/php/Listings.php:365
 msgid "Listing published"
 msgstr "Annons publicerad"
 
-#: source/php/Listings.php:343
-#, php-format
-msgid ""
-"Congratulations %s! Your listing is now approved and published. You can see "
-"your listing here: %s"
-msgstr ""
-"Grattis %s. Din annons är nu godkänd och publicerad. Du kan se din annons "
-"här: %s"
-
-#: source/php/Listings.php:374
-msgid "Listing unpublished"
-msgstr "Annons avpublicerad"
-
-#: source/php/Listings.php:376
+#: source/php/Listings.php:404
 #, php-format
 msgid ""
 "Hi %s! Your listing \"%s\" is now %d days old and therefor it has beed "
@@ -169,11 +164,15 @@ msgid ""
 msgstr ""
 "Hej %s! Din annons ”%s” är nu %d dagar gammal och har därför avpublicerats."
 
+#: source/php/Listings.php:411
+msgid "Listing unpublished"
+msgstr "Annons avpublicerad"
+
 #: source/php/Options.php:15
 msgid "Options"
 msgstr "Inställningar"
 
-#: source/php/Single.php:17
+#: source/php/Single.php:23
 msgid "Back to listing"
 msgstr "Tillbaka till annonslista"
 
@@ -289,6 +288,30 @@ msgstr "Visa inte mitt telefonnummer"
 msgid "Submit"
 msgstr "Skicka"
 
+#: templates/remove-modal.php:12
+msgid "Listing password incorrect."
+msgstr "Lösenordet för annonsen är felaktigt."
+
+#: templates/remove-modal.php:20
+msgid ""
+"To remove the listing you need to have the listing removal password at hand. "
+"Fill in the password below and click the remove button."
+msgstr ""
+"För att ta bort annonsen behöver du ha tillhörande lösenord tillgängligt. "
+"Fyll i lösenordet nedan och klicka på “Ta bort annons”."
+
+#: templates/remove-modal.php:23
+msgid "Note: This will permanently remove the listing."
+msgstr "Notera: Detta kommer ta bort annonsen permanent."
+
+#: templates/remove-modal.php:27
+msgid "Password"
+msgstr "Lösenord"
+
+#: templates/remove-modal.php:34
+msgid "Cancel"
+msgstr "Avbryt"
+
 #: templates/search-form.php:6 templates/search-form.php:42
 msgid "Search"
 msgstr "Sök"
@@ -316,3 +339,6 @@ msgstr "Ett simpelt annonshanteringsverktyg för WordPress. "
 #. Author of the plugin/theme
 msgid "Kristoffer Svanmark"
 msgstr ""
+
+#~ msgid "Add listing"
+#~ msgstr "Ny annons"

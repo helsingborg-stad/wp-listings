@@ -3,14 +3,14 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: WP Listings\n"
-"POT-Creation-Date: 2017-01-11 09:54+0100\n"
+"POT-Creation-Date: 2017-09-05 15:07+0200\n"
 "PO-Revision-Date: 2017-01-03 09:32+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.0.3\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: wp-listings.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -20,8 +20,8 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: Public.php:57
-msgid "Add listing"
+#: Public.php:59 templates/remove-modal.php:6 templates/remove-modal.php:33
+msgid "Remove listing"
 msgstr ""
 
 #: source/php/App.php:18
@@ -39,7 +39,7 @@ msgstr ""
 msgid "You have got a new message about your ad \"%1$s\" from %2$s, <%3$s>"
 msgstr ""
 
-#: source/php/ContactForm.php:66 source/php/FrontendForm.php:124
+#: source/php/ContactForm.php:72 source/php/FrontendForm.php:124
 msgid "You need to login to use the listing submission form."
 msgstr ""
 
@@ -104,69 +104,70 @@ msgstr ""
 msgid "New %s Name"
 msgstr ""
 
-#: source/php/Listings.php:49
+#: source/php/Listings.php:63
 msgctxt "Post type plural"
 msgid "Listings"
 msgstr ""
 
-#: source/php/Listings.php:50
+#: source/php/Listings.php:64
 msgctxt "Post type singular"
 msgid "Listing"
 msgstr ""
 
-#: source/php/Listings.php:53
+#: source/php/Listings.php:67
 msgid "WP Listings could be used for any type of \"buy and sell\" ads."
 msgstr ""
 
-#: source/php/Listings.php:61
+#: source/php/Listings.php:75
 msgid "listing"
 msgstr ""
 
-#: source/php/Listings.php:73 source/php/Listings.php:117
+#: source/php/Listings.php:87 source/php/Listings.php:131
 #: templates/frontend-form.php:52
 msgid "Category"
 msgstr ""
 
-#: source/php/Listings.php:91 source/php/Listings.php:132
+#: source/php/Listings.php:105 source/php/Listings.php:146
 #: templates/frontend-form.php:34
 msgid "Place"
 msgstr ""
 
-#: source/php/Listings.php:118
+#: source/php/Listings.php:132
 msgid "Categories"
 msgstr ""
 
-#: source/php/Listings.php:133
+#: source/php/Listings.php:147
 msgid "Places"
 msgstr ""
 
-#: source/php/Listings.php:341
+#: source/php/Listings.php:358
+#, php-format
+msgid ""
+"Congratulations %1$s! Your listing is now approved and published.<br>Your "
+"password to remove the ad is: <strong>%3$s</strong><br>You can see your "
+"listing here: %2$s"
+msgstr ""
+
+#: source/php/Listings.php:365
 msgid "Listing published"
 msgstr ""
 
-#: source/php/Listings.php:343
-#, php-format
-msgid ""
-"Congratulations %s! Your listing is now approved and published. You can see "
-"your listing here: %s"
-msgstr ""
-
-#: source/php/Listings.php:374
-msgid "Listing unpublished"
-msgstr ""
-
-#: source/php/Listings.php:376
+#: source/php/Listings.php:404
 #, php-format
 msgid ""
 "Hi %s! Your listing \"%s\" is now %d days old and therefor it has beed "
 "unpublished."
 msgstr ""
 
+#: source/php/Listings.php:411
+msgid "Listing unpublished"
+msgstr ""
+
 #: source/php/Options.php:15
 msgid "Options"
 msgstr ""
 
-#: source/php/Single.php:17
+#: source/php/Single.php:23
 msgid "Back to listing"
 msgstr ""
 
@@ -278,6 +279,28 @@ msgstr ""
 
 #: templates/frontend-form.php:221
 msgid "Submit"
+msgstr ""
+
+#: templates/remove-modal.php:12
+msgid "Listing password incorrect."
+msgstr ""
+
+#: templates/remove-modal.php:20
+msgid ""
+"To remove the listing you need to have the listing removal password at hand. "
+"Fill in the password below and click the remove button."
+msgstr ""
+
+#: templates/remove-modal.php:23
+msgid "Note: This will permanently remove the listing."
+msgstr ""
+
+#: templates/remove-modal.php:27
+msgid "Password"
+msgstr ""
+
+#: templates/remove-modal.php:34
+msgid "Cancel"
 msgstr ""
 
 #: templates/search-form.php:6 templates/search-form.php:42
