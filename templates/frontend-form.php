@@ -16,7 +16,7 @@
 
     <div class="grid">
         <div class="grid-md-12">
-            <form action="" method="post" class="gutter gutter-vertical">
+            <form action="" method="post" class="gutter">
                 <?php wp_nonce_field('wp-listing-add', 'wp-listing-nonce', true, true); ?>
 
                 <div class="grid">
@@ -98,12 +98,12 @@
                             <label><?php _e('Images', 'wp-listings'); ?></label>
                             <span class="text-sm">
                                 <?php _e('Note: The first image will be the main image for the listing.', 'wp-listings'); ?><br>
-                                <?php _e('Max filesize', 'wp-listings'); ?>: 2mb<br>
+                                <?php _e('Max filesize', 'wp-listings'); ?>: 5mb<br>
                                 <?php _e('Allowed filetypes', 'wp-listings'); ?>: JPG, PNG
                             </span>
                         </div>
 
-                        <div class="image-upload inline-block" data-max-files="1" data-max-size="2000" data-preview-image="true" style="width:250px;height:250px;">
+                        <div class="image-upload inline-block" data-max-files="1" data-max-size="5000" data-preview-image="true" style="width:250px;height:250px;">
                             <div class="placeholder">
                                 <span class="fa-stack fa-2x">
                                     <i class="fa fa-picture-o fa-stack-2x"></i>
@@ -124,7 +124,7 @@
                             <input type="file" id="listing-image-1" name="listing-image[]" class="hidden">
                         </div>
 
-                        <div class="image-upload inline-block" data-max-files="1" data-max-size="2000" data-preview-image="true" style="width:250px;height:250px;">
+                        <div class="image-upload inline-block" data-max-files="1" data-max-size="5000" data-preview-image="true" style="width:250px;height:250px;">
                             <div class="placeholder">
                                 <span class="fa-stack fa-2x">
                                     <i class="fa fa-picture-o fa-stack-2x"></i>
@@ -145,7 +145,7 @@
                             <input type="file" id="listing-image-2" name="listing-image[]" class="hidden">
                         </div>
 
-                        <div class="image-upload inline-block" data-max-files="1" data-max-size="2000" data-preview-image="true" style="width:250px;height:250px;">
+                        <div class="image-upload inline-block" data-max-files="1" data-max-size="5000" data-preview-image="true" style="width:250px;height:250px;">
                             <div class="placeholder">
                                 <span class="fa-stack fa-2x">
                                     <i class="fa fa-picture-o fa-stack-2x"></i>
